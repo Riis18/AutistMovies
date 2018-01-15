@@ -5,21 +5,39 @@
  */
 package autistmovies.dal;
 
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.io.IOException;
+import java.sql.Connection;
+
 /**
  *
- * @author Jesper
+ * @author Jesper Riis
  */
+public class DataBaseConnector {
+    
+    private SQLServerDataSource dataSource;
 
-private SQLServerDataSource dataSource;
-
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-
-public class DataBaseConnector 
-{
+    /*
+    * sets the database sources.
+    */
+    public DataBaseConnector() throws IOException
+    {
         dataSource = new SQLServerDataSource();
         dataSource.setServerName("EASV-DB2");
         dataSource.setPortNumber(1433);
         dataSource.setDatabaseName("Autistify");
         dataSource.setUser("CS2017A_15");
         dataSource.setPassword("Bjoernhart1234");
+    }
+    
+    /*
+    * gets the connection to the database
+    */
+    public Connection getConnection() throws SQLServerException
+    {
+        return dataSource.getConnection();
+    }
+
+    
 }
