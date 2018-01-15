@@ -112,15 +112,11 @@ public class MovieDAO {
                     }
                 }
             }
+                allCategories.clear();
         }
-            {
-            allCategories.clear();
-            }
             catch (SQLException ex) {
             Logger.getLogger(MovieDAO.class.getName()).log(
                     Level.SEVERE, null, ex);
         }
-        return allCatMovies;
-        
 }
 }

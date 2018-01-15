@@ -10,14 +10,24 @@ package autistmovies.be;
  * @author Captain
  */
 public class Category {
+    
+    private int id;
+    public String name;
 
     public void setId(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.id = id;
     }
 
     public void setName(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       this.name = name;
     }
 
-    
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
 }
