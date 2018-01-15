@@ -16,7 +16,7 @@ import java.sql.Connection;
  */
 public class DataBaseConnector {
     
-    private SQLServerDataSource dataSource;
+    private final SQLServerDataSource dataSource;
 
     /*
     * sets the database sources.
