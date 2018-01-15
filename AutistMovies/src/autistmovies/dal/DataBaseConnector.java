@@ -21,7 +21,7 @@ public class DataBaseConnector {
     /*
     * sets the database sources.
     */
-    public DataBaseConnector() throws IOException
+    public DataBaseConnector()
     {
         dataSource = new SQLServerDataSource();
         dataSource.setServerName("EASV-DB2");
