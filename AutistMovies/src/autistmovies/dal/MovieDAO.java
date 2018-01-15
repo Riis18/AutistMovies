@@ -106,9 +106,10 @@ public class MovieDAO {
                 m.setPersonalrating(rs.getString("personalrating"));
 
                     for (int i = 0; i < allCategories.size(); i++) { 
-                    if(allCategories.get(i).getId() == Category.getId() ) 
+                    if(allCategories.get(i).getId() == c.getId() ) 
                     {
-                    allCategories.get(i).getMovieList().add(Movie);
+                        allCategories.get(i).getMovieList().add(m);
+                    } else {
                     }
                 }
             }

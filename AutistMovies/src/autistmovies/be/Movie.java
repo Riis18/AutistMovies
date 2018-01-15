@@ -5,6 +5,8 @@
  */
 package autistmovies.be;
 
+import java.util.List;
+
 /**
  *
  * @author Jesper
@@ -17,7 +19,7 @@ public class Movie {
     public float personalrating;
 //    public  filelink;
     public int lastview;
-   
+
     
     public void setId(int aInt) {
         this.id = id;

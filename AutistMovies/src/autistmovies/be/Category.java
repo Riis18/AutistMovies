@@ -5,6 +5,9 @@
  */
 package autistmovies.be;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Captain
@@ -13,7 +16,12 @@ public class Category {
     
     private int id;
     public String name;
-
+    public final List<Movie> Movielist;
+    
+    public Category() {
+        this.Movielist = new ArrayList();
+    }
+                
     public void setId(int aInt) {
         this.id = id;
     }
@@ -29,5 +37,10 @@ public class Category {
     public String getName() {
         return name;
     }
+     
+    public List<Movie> getMovieList(){
+        return Movielist;
+    }
+           
 
 }
