@@ -6,7 +6,9 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
@@ -34,7 +36,7 @@
             <JFXButton layoutX="427.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" />
             <JFXButton layoutX="207.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="remove" />
             <JFXButton layoutX="14.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="add movie" />
-            <JFXButton fx:id="playPause" layoutX="408.0" layoutY="26.0" onAction="#play" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Play" />
+            <JFXButton fx:id="playPause" layoutX="581.0" layoutY="119.0" onAction="#play" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Play" />
             <JFXTextField fx:id="txtSearch" focusColor="BLACK" layoutX="671.0" layoutY="26.0" promptText="Search Here" />
             <JFXButton layoutX="671.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;">
                <effect>
@@ -60,8 +62,15 @@
                   <TableColumn prefWidth="148.0" style="-fx-background-color: #A2A5A5;" text="C2" />
                </columns>
             </TableView>
-            <MediaView fitHeight="200.0" fitWidth="300.0" layoutX="35.0" layoutY="26.0" />
-            <JFXButton fx:id="fullscreen" layoutX="339.0" layoutY="201.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Fullscreen">
+            <BorderPane layoutX="14.0" layoutY="39.0" prefHeight="180.0" prefWidth="310.0" style="-fx-background-color: grey;">
+               <effect>
+                  <InnerShadow />
+               </effect>
+               <center>
+                  <MediaView fx:id="media" fitHeight="170.0" fitWidth="300.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <JFXButton fx:id="fullscreen" layoutX="328.0" layoutY="199.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Fullscreen">
                <effect>
                   <DropShadow />
                </effect>
