@@ -29,8 +29,7 @@ public class CategoryDAO {
     private DataBaseConnector cm = new DataBaseConnector();
     
             
-        public List<Category> getAllCategories(
-            String Category) {
+        public List<Category> getAllCategories() {
 
         try (Connection con = cm.getConnection()) {
 
@@ -116,5 +115,39 @@ public class CategoryDAO {
         }
                 
     }
+    public void getAllCatMovies() {
+                  
+            try (Connection con = cm.getConnection()) {
+
+            PreparedStatement pstmt
+                    = con.prepareStatement("Select * FROM CategoryMovie, Movie, Category " + "where CategoryMovie.MovieId = Movie.id AND CategoryMovie.CategoryId = Category.id");
+                      ResultSet rs = pstmt.executeQuery();
+                      
+                      
+                while (rs.next()) {
+                Category c = new Category();
+                Movie m = new Movie();
+                c.setId(rs.getInt("id"));
+                m.setId(rs.getInt("id"));
+                m.setName(rs.getString("name"));
+                m.setRating(rs.getString("rating"));
+                m.setFileLink(rs.getString("filelink"));
+                m.setPersonalrating(rs.getString("personalrating"));
+
+                    for (int i = 0; i < allCategories.size(); i++) { 
+                    if(allCategories.get(i).getId() == c.getId() ) 
+                    {
+                        allCategories.get(i).getMovieList().add(m);
+                    } else {
+                    }
+                }
+            }
+                allCategories.clear();
+        }
+            catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+}
  
 }

@@ -19,6 +19,10 @@ public class CategoryManager {
     
     CategoryDAO cDAO;
     MovieDAO mDAO;
+
+    public CategoryManager() {
+        this.cDAO = new CategoryDAO();
+    }
        
     public void add(Category Category)
     {
@@ -26,8 +30,7 @@ public class CategoryManager {
     }
 
     public List<Category> getAllCategories() {
-        String Category = null;
-      return cDAO.getAllCategories(Category);
+      return cDAO.getAllCategories();
     }
     public void remove(Category selectedCategory){
         cDAO.remove(selectedCategory);
@@ -38,7 +41,7 @@ public class CategoryManager {
     }
     
     public void loadMoviesInCategory(){
-      mDAO.getAllCatMovies();
+      cDAO.getAllCatMovies();
     }
     
 }

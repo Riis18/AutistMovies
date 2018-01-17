@@ -22,8 +22,6 @@ import java.util.logging.Logger;
  * @author Jesper
  */
 public class MovieDAO {
-    
-    List<Category> allCategories = new ArrayList();
    
     private DataBaseConnector dbConnector;
     
@@ -57,42 +55,8 @@ public class MovieDAO {
         return allMovies;
 
 }
-            public void getAllCatMovies() {
-                  
-            try (Connection con = cm.getConnection()) {
-
-            PreparedStatement pstmt
-                    = con.prepareStatement("Select * FROM CatMovie, Movie, Category" + "where CatMovie.MovieId = Movie.id AND CatMovie.CategoryId = Category.id");
-                      ResultSet rs = pstmt.executeQuery();
-                      
-                      
-                while (rs.next()) {
-                Category c = new Category();
-                Movie m = new Movie();
-                c.setId(rs.getInt("id"));
-                m.setId(rs.getInt("id"));
-                m.setName(rs.getString("name"));
-                m.setRating(rs.getString("rating"));
-                m.setFileLink(rs.getString("filelink"));
-                m.setPersonalrating(rs.getString("personalrating"));
-
-                    for (int i = 0; i < allCategories.size(); i++) { 
-                    if(allCategories.get(i).getId() == c.getId() ) 
-                    {
-                        allCategories.get(i).getMovieList().add(m);
-                    } else {
-                    }
-                }
-            }
-                allCategories.clear();
-        }
-            catch (SQLException ex) {
-            Logger.getLogger(MovieDAO.class.getName()).log(
-                    Level.SEVERE, null, ex);
-        }
-}
             
-                /*
+   /*
     * Inserts the values of a movie into the database table "Movie"
     */
     public void createMovie(Movie movie)

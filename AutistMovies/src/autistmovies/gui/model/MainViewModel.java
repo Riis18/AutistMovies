@@ -34,6 +34,7 @@ public class MainViewModel {
             this.mm = new MovieManager();
             selectedMovie = FXCollections.observableArrayList();
             movieList = FXCollections.observableArrayList();
+            categories = FXCollections.observableArrayList();
             categoryList = FXCollections.observableArrayList();
             selectedCategory = FXCollections.observableArrayList();
 
