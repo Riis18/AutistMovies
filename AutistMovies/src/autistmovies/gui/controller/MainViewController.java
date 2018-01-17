@@ -137,6 +137,17 @@ public class MainViewController implements Initializable {
         stage.setScene(new Scene(root1));
         stage.show();
     }
+
+    @FXML
+    private void AddCategory(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/autistmovies/gui/view/AddCatView.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+
+        Stage stage = new Stage();
+
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
     
     
     

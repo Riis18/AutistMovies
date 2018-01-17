@@ -38,7 +38,7 @@
             <JFXButton layoutX="464.0" layoutY="652.0" onAction="#openAddMovieView" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="add movie" />
             <JFXButton fx:id="playPause" layoutX="581.0" layoutY="119.0" onAction="#play" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Play" />
             <JFXTextField fx:id="txtSearch" focusColor="BLACK" layoutX="671.0" layoutY="26.0" promptText="Search Here" />
-            <JFXButton layoutX="12.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;">
+            <JFXButton layoutX="12.0" layoutY="652.0" onAction="#AddCategory" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Add Category">
                <effect>
                   <DropShadow />
                </effect>

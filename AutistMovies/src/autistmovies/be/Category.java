@@ -22,11 +22,11 @@ public class Category {
         this.Movielist = new ArrayList();
     }
                 
-    public void setId(int Int) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public void setName(String string) {
+    public void setName(String name) {
        this.name = name;
     }
 

@@ -43,7 +43,7 @@ public class MainViewModel {
     public void addCategory(Category category)
     {
         cm.add(category);
-        categoryList.add(category);
+        categories.add(category);
     }
     
      public ObservableList<Category> getSelectedCategory() {

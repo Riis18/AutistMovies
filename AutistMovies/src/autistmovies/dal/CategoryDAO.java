@@ -71,7 +71,7 @@ public class CategoryDAO {
         
             public void createCategory(Category category) 
     {
-        try (Connection con = dbConnector.getConnection()) {
+        try (Connection con = cm.getConnection()) {
            String sql = "INSERT INTO category"
                    + "(Name)"
                    + "VALUES (?)";

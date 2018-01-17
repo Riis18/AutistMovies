@@ -9,8 +9,11 @@ import autistmovies.be.Category;
 import autistmovies.gui.model.MainViewModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,31 +40,12 @@ public class AddCatViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
-    @FXML
-    private void saveCategory(ActionEvent event) {
-        
-            if (!mvm.getSelectedCategory().isEmpty()) { 
-                
-            Category Category = new Category();
-            Category.setName(txtCT.getText());
-            Category.setId(mvm.getSelectedCategory().get(0).getId());
-            mvm.getSelectedCategory().clear();
-            mvm.loadMoviesInCategory();
-            
-        } else {
-            
-            Category category = new Category();
-            category.setName(txtCT.getText());
-            category.setId(-1);
-            
-            mvm.addCategory(category);
+          try {
+           mvm = MainViewModel.getInstance();
+        } catch (IOException ex) {
+            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Stage stage = (Stage) saveBtnCT.getScene().getWindow();
-        stage.close();
-    }
+    }    
 
     @FXML
     private void cancelAddCat(ActionEvent event) {
@@ -69,6 +53,29 @@ public class AddCatViewController implements Initializable {
         mvm.getSelectedCategory().clear();
         
         Stage stage = (Stage) cancelBtnCT.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void saveAddCat(ActionEvent event) {
+         
+//        if (!mvm.getSelectedCategory().isEmpty()) { 
+//                
+//            Category Category = new Category();
+//            Category.setName(txtCT.getText());
+//            Category.setId(mvm.getSelectedCategory().get(0).getId());
+//            mvm.getSelectedCategory().clear();
+//            mvm.loadMoviesInCategory();
+//            
+//        } else {
+            
+            Category category = new Category();
+            category.setName(txtCT.getText());
+            category.setId(-1);
+            
+            mvm.addCategory(category);
+//        }
+        Stage stage = (Stage) saveBtnCT.getScene().getWindow();
         stage.close();
     }
     
