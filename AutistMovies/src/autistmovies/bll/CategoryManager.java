@@ -7,6 +7,7 @@ package autistmovies.bll;
 
 import autistmovies.be.Category;
 import autistmovies.be.Movie;
+import autistmovies.dal.CategoryDAO;
 import autistmovies.dal.MovieDAO;
 import java.util.List;
 
@@ -16,23 +17,24 @@ import java.util.List;
  */
 public class CategoryManager {
     
+    CategoryDAO cDAO;
     MovieDAO mDAO;
-    
+       
     public void add(Category Category)
     {
-        mDAO.createCategory(Category);
+        cDAO.createCategory(Category);
     }
 
     public List<Category> getAllCategories() {
         String Category = null;
-      return mDAO.getAllCategories(Category);
+      return cDAO.getAllCategories(Category);
     }
     public void remove(Category selectedCategory){
-        mDAO.remove(selectedCategory);
+        cDAO.remove(selectedCategory);
     }
     
     public void addMovieToCategories(Category category , Movie movie){
-       mDAO.addMovieToCategory(category, movie);
+       cDAO.addMovieToCategory(category, movie);
     }
     
     public void loadMoviesInCategory(){

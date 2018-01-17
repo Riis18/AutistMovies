@@ -5,8 +5,6 @@
  */
 package autistmovies.be;
 
-import java.util.List;
-
 /**
  *
  * @author Jesper
@@ -17,7 +15,7 @@ public class Movie {
     private int id;
     public float rating;
     public float personalrating;
-//    public  filelink;
+    public String filelink;
     public int lastview;
 
     
@@ -25,7 +23,7 @@ public class Movie {
         this.id = id;
     }
 
-    public void setName(String string) {
+    public void setName(String name) {
        this.name = name;
     }
 
@@ -33,9 +31,9 @@ public class Movie {
         this.rating = rating;
     }
          
-            //needs to be fixed
+          
     public void setFileLink(String string) {
-//        this.filelink = filelink;
+        this.filelink = filelink;
     }
 
     public void setLastview(int aInt) {
@@ -60,10 +58,9 @@ public class Movie {
         return rating;
     }
     
-     // needs to be fixed
-//    public filelink()
-//           return filelink; 
-           
+    public String getFileLink(){
+        return filelink; 
+     }
     
     public float getPersonalrating() {
         return personalrating;
@@ -72,7 +69,7 @@ public class Movie {
     public int getLastview() {
         return lastview;
     }
-    
+   
     
       
 }

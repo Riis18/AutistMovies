@@ -60,33 +60,6 @@ public class MovieDAO {
         return allMovies;
 
 }
-        
-        public List<Category> getAllCategories(
-            String Category) {
-
-        try (Connection con = cm.getConnection()) {
-
-            PreparedStatement pstmt
-                    = con.prepareStatement("Select * FROM Category");
-                      ResultSet rs = pstmt.executeQuery();
-                      
-                      
-            while (rs.next()) {
-                Category c = new Category();
-                c.setId(rs.getInt("id"));
-                c.setName(rs.getString("name"));
-
-
-                allCategories.add(c);
-            }
-        }
-            catch (SQLException ex) {
-            Logger.getLogger(MovieDAO.class.getName()).log(
-                    Level.SEVERE, null, ex);
-        }
-        return allCategories;
-    
-     }
             public void getAllCatMovies() {
                   
             try (Connection con = cm.getConnection()) {
@@ -122,65 +95,53 @@ public class MovieDAO {
         }
 }
             
-        public void remove(Category selectedCategory) {
+                /*
+    * Inserts the values of a movie into the database table "Movie"
+    */
+    public void createMovie(Movie movie)
+    {
+        try (Connection con = cm.getConnection())
+        {
+            String sql
+                    = "INSERT INTO Movie"
+                    + "(name, IMDBRating, filelink) "
+                    + "VALUES(?,?,?,?)";
+
+            PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            Movie m = new Movie();
+            pstmt.setString(1, m.getName());
+            pstmt.setFloat(2, m.getRating());
+            pstmt.setString(3, m.getFileLink());
+            
+            int affected = pstmt.executeUpdate();
+            if(affected<1)
+                throw new SQLException("Can't save movie");
+            
+            //Get Database generated id and set movie id
+            ResultSet rs = pstmt.getGeneratedKeys();
+            if (rs.next()) {
+                movie.setId(rs.getInt(1));
+            }
+              
+        } 
+        
+        catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }         
+            public void remove(Movie selectedMovie) {
         try (Connection con = dbConnector.getConnection()) {
             String sql
-                    = "DELETE FROM Category WHERE categoryID=?";
+                    = "DELETE FROM Movie WHERE MovieID=?";
             PreparedStatement pstmt
                     = con.prepareStatement(sql);
-            pstmt.setInt(1, selectedCategory.getId());
-            
+            pstmt.setInt(1, selectedMovie.getId());
+
             pstmt.execute();
         } catch (SQLException ex) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        
-            public void createCategory(Category category) 
-    {
-        try (Connection con = dbConnector.getConnection()) {
-           String sql = "INSERT INTO category"
-                   + "(ctName)"
-                   + "VALUES (?)";
-           PreparedStatement pstmt
-                   = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-           pstmt.setString(1, category.getName());
-           
-           int affected = pstmt.executeUpdate();
-           if (affected<1)
-                   throw new SQLException("Can't save category");
-                   
-                   ResultSet rs = pstmt.getGeneratedKeys();
-                   if (rs.next()) {
-                       category.setId(rs.getInt(1));
-                   }
-        }
-        
-        catch (SQLException ex) {
-            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-        public void addMovieToCategory(Category category, Movie movie) {
-        
-                try (Connection con = dbConnector.getConnection()) {
-           String sql = "INSERT INTO Category"
-                   + "(MovieId, CategoryId)"
-                   + "VALUES (?,?)";
-           PreparedStatement pstmt
-                   = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-           pstmt.setInt(1, movie.getId());
-           pstmt.setInt(2, category.getId());
-           
-           int affected = pstmt.executeUpdate();
-           if (affected<1)
-                   throw new SQLException("Can't save movie to Category");
-                 
-        }
-        
-        catch (SQLException ex) {
-            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                
-    }
- 
-}
+
+ }
