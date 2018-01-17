@@ -63,4 +63,15 @@ public class MainViewController implements Initializable {
         stage.show();
 
     }
+
+    @FXML
+    private void openPersonalRating(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/autistmovies/gui/view/PersonalRatingView.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+
+        Stage stage = new Stage();
+
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
 }

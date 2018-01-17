@@ -26,24 +26,24 @@
                   </Label>
                </children>
             </Pane>
-            <JFXButton layoutX="604.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;">
+            <JFXButton layoutX="345.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Button">
                <effect>
                   <DropShadow />
                </effect>
             </JFXButton>
             <JFXButton fx:id="clearBtn" layoutX="806.0" layoutY="26.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Search" />
-            <JFXButton layoutX="806.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" />
-            <JFXButton layoutX="427.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" />
-            <JFXButton layoutX="207.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="remove" />
-            <JFXButton layoutX="14.0" layoutY="652.0" onAction="#openAddMovieView" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="add movie" />
+            <JFXButton layoutX="133.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" />
+            <JFXButton layoutX="243.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" />
+            <JFXButton layoutX="855.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="remove" />
+            <JFXButton layoutX="635.0" layoutY="652.0" onAction="#openAddMovieView" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="add movie" />
             <JFXButton fx:id="playPause" layoutX="581.0" layoutY="119.0" onAction="#play" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Play" />
             <JFXTextField fx:id="txtSearch" focusColor="BLACK" layoutX="671.0" layoutY="26.0" promptText="Search Here" />
-            <JFXButton layoutX="671.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;">
+            <JFXButton layoutX="23.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;">
                <effect>
                   <DropShadow />
                </effect>
             </JFXButton>
-            <JFXButton layoutX="109.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="edit movie" />
+            <JFXButton layoutX="736.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="edit movie" />
             <TableView layoutX="23.0" layoutY="239.0" prefHeight="406.0" prefWidth="272.0" style="-fx-background-color: #A2A5A5; -fx-background-radius: 0.5em;">
               <columns>
                 <TableColumn prefWidth="123.0" style="-fx-background-color: #A2A5A5;" text="C1" />
@@ -71,6 +71,16 @@
                </center>
             </BorderPane>
             <JFXButton fx:id="fullscreen" layoutX="328.0" layoutY="199.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Fullscreen">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </JFXButton>
+            <JFXButton layoutX="636.0" layoutY="212.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Add To Category">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </JFXButton>
+            <JFXButton layoutX="784.0" layoutY="212.0" onAction="#openPersonalRating" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Add Personal Rating">
                <effect>
                   <DropShadow />
                </effect>
