@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="289.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autistmovies.gui.controller.AddMovieViewController">
+<AnchorPane id="AnchorPane" prefHeight="289.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autistmovies.gui.controller.AddMovieViewController">
    <children>
       <AnchorPane prefHeight="292.0" prefWidth="608.0" style="-fx-background-color: GREY; -fx-background-radius: 0.5em;">
          <children>
@@ -32,8 +32,8 @@
             </Pane>
             <JFXButton fx:id="saveBtn" layoutX="28.0" layoutY="253.0" onAction="#saveMovie" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Save" />
             <JFXButton fx:id="cancelBtn" layoutX="542.0" layoutY="253.0" onAction="#cancelAddMovieView" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Cancel" />
-            <JFXButton layoutX="471.0" layoutY="221.0" onAction="#chooseFile" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Choose" />
-            <JFXTextField fx:id="txtName" focusColor="BLACK" layoutX="229.0" layoutY="52.0" prefHeight="25.0" prefWidth="230.0" />
+            <JFXButton layoutX="540.0" layoutY="221.0" onAction="#chooseFile" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Choose" />
+            <JFXTextField fx:id="txtName" focusColor="BLACK" layoutX="229.0" layoutY="52.0" prefHeight="25.0" prefWidth="297.0" />
             <Pane layoutY="221.0" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #919393; -fx-background-radius: 0.5em;">
                <children>
                   <Label alignment="CENTER" layoutX="39.0" layoutY="4.0" prefHeight="17.0" prefWidth="139.0" text="File">
@@ -43,7 +43,7 @@
                   </Label>
                </children>
             </Pane>
-            <JFXTextField fx:id="txtFileLink" focusColor="BLACK" layoutX="229.0" layoutY="221.0" prefHeight="25.0" prefWidth="230.0" />
+            <JFXTextField fx:id="txtFileLink" focusColor="BLACK" layoutX="229.0" layoutY="221.0" prefHeight="25.0" prefWidth="297.0" />
             <Pane layoutY="96.0" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #919393; -fx-background-radius: 0.5em;">
                <children>
                   <Label alignment="CENTER" layoutX="39.0" layoutY="4.0" prefHeight="17.0" prefWidth="139.0" text="IMDB Rating">
@@ -53,7 +53,29 @@
                   </Label>
                </children>
             </Pane>
-            <JFXComboBox fx:id="combo" layoutX="229.0" layoutY="96.0" prefHeight="25.0" prefWidth="230.0" />
+            <JFXComboBox fx:id="combo" layoutX="229.0" layoutY="96.0" prefHeight="25.0" prefWidth="297.0" />
+            <Pane layoutY="140.0" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #919393; -fx-background-radius: 0.5em;">
+               <children>
+                  <Label alignment="CENTER" layoutX="39.0" layoutY="4.0" prefHeight="17.0" prefWidth="139.0" text="Personal Rating">
+                     <font>
+                        <Font name="Rockwell Extra Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutY="178.0" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #919393; -fx-background-radius: 0.5em;">
+               <children>
+                  <Label alignment="CENTER" layoutX="39.0" layoutY="4.0" prefHeight="17.0" prefWidth="139.0" text="Categories">
+                     <font>
+                        <Font name="Rockwell Extra Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <JFXComboBox fx:id="combo1" layoutX="229.0" layoutY="140.0" prefHeight="25.0" prefWidth="297.0" />
+            <JFXComboBox fx:id="comboCat1" layoutX="229.0" layoutY="178.0" prefHeight="25.0" prefWidth="95.0" />
+            <JFXComboBox fx:id="comboCat2" layoutX="340.0" layoutY="178.0" prefHeight="25.0" prefWidth="95.0" />
+            <JFXComboBox fx:id="comboCat3" layoutX="446.0" layoutY="178.0" prefHeight="25.0" prefWidth="80.0" />
          </children>
       </AnchorPane>
    </children>

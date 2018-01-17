@@ -113,19 +113,6 @@ public class MainViewController implements Initializable {
     @FXML
     private void play(ActionEvent event) {
     }
-    
-    @FXML
-    private void openAddMovieView(ActionEvent event) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/autistmovies/gui/view/AddMovieView.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-
-        Stage stage = new Stage();
-
-        stage.setScene(new Scene(root1));
-        stage.show();
-
-    }
 
     @FXML
     private void openPersonalRating(ActionEvent event) throws IOException {
@@ -141,6 +128,21 @@ public class MainViewController implements Initializable {
     @FXML
     private void AddCategory(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/autistmovies/gui/view/AddCatView.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+
+        Stage stage = new Stage();
+
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
+
+    @FXML
+    private void deleteMovie(ActionEvent event) {
+    }
+
+    @FXML
+    private void addMovie(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/autistmovies/gui/view/AddMovieView.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
 
         Stage stage = new Stage();

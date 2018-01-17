@@ -41,4 +41,10 @@ public class Category {
     public List<Movie> getMovieList(){
         return Movielist;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" + "id=" + id + ", name=" + name + ", Movielist=" + Movielist + '}';
+    }
+    
 }
