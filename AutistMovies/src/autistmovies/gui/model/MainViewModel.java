@@ -10,6 +10,7 @@ import autistmovies.be.Movie;
 import autistmovies.bll.CategoryManager;
 import autistmovies.bll.MovieManager;
 import java.io.IOException;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -25,11 +26,14 @@ public class MainViewModel {
     public ObservableList<Category> categories;
     public ObservableList<Movie> selectedMovie;
     public ObservableList<Movie> movieList;
+    private static MainViewModel instance;
     
     public MainViewModel() throws IOException{
         
             this.cm = new CategoryManager();
             this.mm = new MovieManager();
+            selectedMovie = FXCollections.observableArrayList();
+            movieList = FXCollections.observableArrayList();
 
     }
     
@@ -74,6 +78,29 @@ public class MainViewModel {
     }
 
     public void addMovie(Movie movie) {
+        mm.add(movie);
         movieList.add(movie);
+    }
+    
+    public void loadSongs() {
+        movieList.clear();
+        movieList.addAll(mm.getAllMovies());
+    }
+    
+    public ObservableList<Movie> getMovies() {
+        return movieList;
+    }
+    
+    public void addSelectedMovie(Movie movie) {
+        selectedMovie.add(movie);
+    }
+    
+    public static MainViewModel getInstance() throws IOException
+    {
+        if (instance == null)
+        {
+            instance = new MainViewModel();
+        }
+        return instance;
     }
 }

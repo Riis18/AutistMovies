@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -38,6 +39,12 @@ public class MainViewController implements Initializable {
     private MediaView media;
     @FXML
     private JFXButton fullscreen;
+    @FXML
+    private TableView<?> cList;
+    @FXML
+    private TableView<?> mCatList;
+    @FXML
+    private TableView<?> mList;
 
     /**
      * Initializes the controller class.

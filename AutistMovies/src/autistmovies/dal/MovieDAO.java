@@ -104,7 +104,7 @@ public class MovieDAO {
         {
             String sql
                     = "INSERT INTO Movie"
-                    + "(name, IMDBRating, filelink) "
+                    + "(name, rating, filelink) "
                     + "VALUES(?,?,?,?)";
 
             PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

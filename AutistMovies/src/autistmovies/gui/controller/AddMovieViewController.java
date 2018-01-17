@@ -12,8 +12,11 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -55,6 +58,16 @@ public class AddMovieViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         combo.getItems().addAll(comboList);
+        try {
+            mvm = MainViewModel.getInstance();
+        } catch (IOException ex) {
+            Logger.getLogger(AddMovieViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(!mvm.getSelectedMovie().isEmpty()) 
+        {
+        txtName.setText(mvm.getSelectedMovie().get(0).getName());
+        txtFileLink.setText(mvm.getSelectedMovie().get(0).getFileLink());
+        }
     }    
 
     @FXML
