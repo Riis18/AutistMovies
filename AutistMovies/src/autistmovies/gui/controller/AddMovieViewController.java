@@ -5,6 +5,7 @@
  */
 package autistmovies.gui.controller;
 
+import autistmovies.be.Category;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -12,6 +13,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 
 /**
  * FXML Controller class
@@ -27,9 +29,15 @@ public class AddMovieViewController implements Initializable {
     @FXML
     private JFXTextField txtTitle;
     @FXML
-    private JFXTextField txtCategory;
-    @FXML
     private JFXTextField txtFilePath;
+    @FXML
+    private ChoiceBox<Category> cat1;
+    @FXML
+    private ChoiceBox<Category> cat3;
+    @FXML
+    private ChoiceBox<Category> cat4;
+    @FXML
+    private ChoiceBox<Category> cat2;
 
     /**
      * Initializes the controller class.
@@ -40,7 +48,7 @@ public class AddMovieViewController implements Initializable {
     }    
 
     @FXML
-    private void saveSong(ActionEvent event) {
+    private void saveMovie(ActionEvent event) {
     }
 
     @FXML
@@ -50,5 +58,5 @@ public class AddMovieViewController implements Initializable {
     @FXML
     private void chooseFile(ActionEvent event) {
     }
-        
+    
 }

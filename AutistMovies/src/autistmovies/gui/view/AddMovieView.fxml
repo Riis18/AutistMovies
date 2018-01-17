@@ -29,21 +29,11 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutY="87.0" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #919393; -fx-background-radius: 0.5em;">
-               <children>
-                  <Label alignment="CENTER" layoutX="39.0" layoutY="4.0" prefHeight="17.0" prefWidth="139.0" text="Category">
-                     <font>
-                        <Font name="Rockwell Extra Bold" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <JFXButton fx:id="saveBtn" layoutX="28.0" layoutY="253.0" onAction="#saveSong" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Save" />
+            <JFXButton fx:id="saveBtn" layoutX="28.0" layoutY="253.0" onAction="#saveMovie" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Save" />
             <JFXButton fx:id="cancelBtn" layoutX="542.0" layoutY="253.0" onAction="#cancelAddMovieView" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Cancel" />
-            <JFXButton layoutX="471.0" layoutY="122.0" onAction="#chooseFile" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Choose" />
+            <JFXButton layoutX="471.0" layoutY="221.0" onAction="#chooseFile" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Choose" />
             <JFXTextField fx:id="txtTitle" focusColor="BLACK" layoutX="229.0" layoutY="52.0" prefHeight="25.0" prefWidth="230.0" />
-            <JFXTextField fx:id="txtCategory" focusColor="BLACK" layoutX="229.0" layoutY="87.0" prefHeight="25.0" prefWidth="230.0" />
-            <Pane layoutY="122.0" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #919393; -fx-background-radius: 0.5em;">
+            <Pane layoutY="221.0" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #919393; -fx-background-radius: 0.5em;">
                <children>
                   <Label alignment="CENTER" layoutX="39.0" layoutY="4.0" prefHeight="17.0" prefWidth="139.0" text="File">
                      <font>
@@ -52,7 +42,27 @@
                   </Label>
                </children>
             </Pane>
-            <JFXTextField fx:id="txtFilePath" focusColor="BLACK" layoutX="229.0" layoutY="122.0" prefHeight="25.0" prefWidth="230.0" />
+            <JFXTextField fx:id="txtFilePath" focusColor="BLACK" layoutX="229.0" layoutY="221.0" prefHeight="25.0" prefWidth="230.0" />
+            <Pane layoutY="96.0" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #919393; -fx-background-radius: 0.5em;">
+               <children>
+                  <Label alignment="CENTER" layoutX="39.0" layoutY="4.0" prefHeight="17.0" prefWidth="139.0" text="Personal Rating">
+                     <font>
+                        <Font name="Rockwell Extra Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <JFXTextField fx:id="txtFilePath1" focusColor="BLACK" layoutX="229.0" layoutY="96.0" prefHeight="25.0" prefWidth="230.0" />
+            <Pane layoutY="134.0" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #919393; -fx-background-radius: 0.5em;">
+               <children>
+                  <Label alignment="CENTER" layoutX="39.0" layoutY="4.0" prefHeight="17.0" prefWidth="139.0" text="IMDB Rating">
+                     <font>
+                        <Font name="Rockwell Extra Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <JFXTextField fx:id="txtFilePath2" focusColor="BLACK" layoutX="229.0" layoutY="134.0" prefHeight="25.0" prefWidth="230.0" />
          </children>
       </AnchorPane>
    </children>

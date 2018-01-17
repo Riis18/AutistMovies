@@ -50,10 +50,11 @@ public class MainViewController implements Initializable {
     @FXML
     private void play(ActionEvent event) {
     }
-        @FXML
+    
+    @FXML
     private void openAddMovieView(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/AutistMovies/gui/view/AddSongView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/AutistMovies/gui/view/AddMovieView.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
 
         Stage stage = new Stage();

@@ -22,7 +22,7 @@ public class Category {
         this.Movielist = new ArrayList();
     }
                 
-    public void setId(int aInt) {
+    public void setId(int Int) {
         this.id = id;
     }
 
@@ -41,6 +41,4 @@ public class Category {
     public List<Movie> getMovieList(){
         return Movielist;
     }
-           
-
 }
