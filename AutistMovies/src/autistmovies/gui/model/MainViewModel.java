@@ -8,6 +8,8 @@ package autistmovies.gui.model;
 import autistmovies.be.Category;
 import autistmovies.be.Movie;
 import autistmovies.bll.CategoryManager;
+import autistmovies.bll.MovieManager;
+import java.io.IOException;
 import javafx.collections.ObservableList;
 
 /**
@@ -17,13 +19,17 @@ import javafx.collections.ObservableList;
 public class MainViewModel {
     
     private final CategoryManager cm;
+    private final MovieManager mm;
     public ObservableList<Category> categoryList;
     public ObservableList<Category> selectedCategory;
     public ObservableList<Category> categories;
+    public ObservableList<Movie> selectedMovie;
+    public ObservableList<Movie> movieList;
     
-    public MainViewModel(){
+    public MainViewModel() throws IOException{
         
             this.cm = new CategoryManager();
+            this.mm = new MovieManager();
 
     }
     
@@ -62,4 +68,12 @@ public class MainViewModel {
      public void loadMoviesInCategory() {
        cm.loadMoviesInCategory();
      }
+
+    public ObservableList<Movie> getSelectedMovie() {
+        return selectedMovie;
+    }
+
+    public void addMovie(Movie movie) {
+        movieList.add(movie);
+    }
 }
