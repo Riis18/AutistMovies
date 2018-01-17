@@ -37,10 +37,8 @@ public class MovieDAO {
         try (Connection con = cm.getConnection()) {
 
             PreparedStatement pstmt
-                    = con.prepareStatement("Select * FROM Movie");
-                      ResultSet rs = pstmt.executeQuery();
-                      
-                      
+                  = con.prepareStatement("SELECT * FROM Movie");
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Movie m = new Movie();
                 m.setId(rs.getInt("id"));
@@ -54,8 +52,7 @@ public class MovieDAO {
             }
         }
             catch (SQLException ex) {
-            Logger.getLogger(MovieDAO.class.getName()).log(
-                    Level.SEVERE, null, ex);
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return allMovies;
 

@@ -34,6 +34,8 @@ public class MainViewModel {
             this.mm = new MovieManager();
             selectedMovie = FXCollections.observableArrayList();
             movieList = FXCollections.observableArrayList();
+            categoryList = FXCollections.observableArrayList();
+            selectedCategory = FXCollections.observableArrayList();
 
     }
     
@@ -82,7 +84,7 @@ public class MainViewModel {
         movieList.add(movie);
     }
     
-    public void loadSongs() {
+    public void loadMovies() {
         movieList.clear();
         movieList.addAll(mm.getAllMovies());
     }

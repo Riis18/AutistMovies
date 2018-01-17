@@ -13,7 +13,7 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autistmovies.gui.controller.MainViewController">
+<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autistmovies.gui.controller.MainViewController">
    <children>
       <AnchorPane prefHeight="691.0" prefWidth="928.0" style="-fx-background-color: GREY; -fx-background-radius: 0.5em;">
          <children>
@@ -35,31 +35,31 @@
             <JFXButton layoutX="133.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" />
             <JFXButton layoutX="243.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" />
             <JFXButton layoutX="855.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="remove" />
-            <JFXButton layoutX="635.0" layoutY="652.0" onAction="#openAddMovieView" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="add movie" />
+            <JFXButton layoutX="464.0" layoutY="652.0" onAction="#openAddMovieView" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="add movie" />
             <JFXButton fx:id="playPause" layoutX="581.0" layoutY="119.0" onAction="#play" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Play" />
             <JFXTextField fx:id="txtSearch" focusColor="BLACK" layoutX="671.0" layoutY="26.0" promptText="Search Here" />
-            <JFXButton layoutX="23.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;">
+            <JFXButton layoutX="12.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;">
                <effect>
                   <DropShadow />
                </effect>
             </JFXButton>
-            <JFXButton layoutX="736.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="edit movie" />
-            <TableView fx:id="cList" layoutX="23.0" layoutY="239.0" prefHeight="406.0" prefWidth="272.0" style="-fx-background-color: #A2A5A5; -fx-background-radius: 0.5em;">
+            <JFXButton layoutX="654.0" layoutY="652.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="edit movie" />
+            <TableView fx:id="cList" layoutX="12.0" layoutY="239.0" prefHeight="406.0" prefWidth="172.0" style="-fx-background-color: #A2A5A5; -fx-background-radius: 0.5em;">
               <columns>
-                <TableColumn prefWidth="123.0" style="-fx-background-color: #A2A5A5;" text="C1" />
-                <TableColumn prefWidth="148.0" style="-fx-background-color: #A2A5A5;" text="C2" />
+                <TableColumn fx:id="CClm" prefWidth="170.0" style="-fx-background-color: #A2A5A5;" text="Category" />
               </columns>
             </TableView>
-            <TableView fx:id="mCatList" layoutX="328.0" layoutY="239.0" prefHeight="406.0" prefWidth="272.0" style="-fx-background-color: #A2A5A5; -fx-background-radius: 0.5em;">
+            <TableView fx:id="mCatList" layoutX="192.0" layoutY="239.0" prefHeight="406.0" prefWidth="272.0" style="-fx-background-color: #A2A5A5; -fx-background-radius: 0.5em;">
                <columns>
-                  <TableColumn prefWidth="149.0" style="-fx-background-color: #A2A5A5;" text="C1" />
-                  <TableColumn prefWidth="143.0" style="-fx-background-color: #A2A5A5;" text="C2" />
+                  <TableColumn fx:id="MICClm" prefWidth="271.0" style="-fx-background-color: #A2A5A5;" text="Movies within selected category" />
                </columns>
             </TableView>
-            <TableView fx:id="mList" layoutX="636.0" layoutY="239.0" prefHeight="406.0" prefWidth="272.0" style="-fx-background-color: #A2A5A5; -fx-background-radius: 0.5em;">
+            <TableView fx:id="mList" layoutX="472.0" layoutY="239.0" prefHeight="406.0" prefWidth="436.0" style="-fx-background-color: #A2A5A5; -fx-background-radius: 0.5em;">
                <columns>
-                  <TableColumn prefWidth="123.0" style="-fx-background-color: #A2A5A5;" text="C1" />
-                  <TableColumn prefWidth="148.0" style="-fx-background-color: #A2A5A5;" text="C2" />
+                  <TableColumn fx:id="IMDBClm" prefWidth="98.0" style="-fx-background-color: #A2A5A5;" text="IMDB Rating" />
+                  <TableColumn fx:id="NameClm" prefWidth="119.0" style="-fx-background-color: #A2A5A5;" text="Name" />
+                  <TableColumn fx:id="PRClm" prefWidth="97.0" style="-fx-background-color: #A2A5A5;" text="Personal Rating" />
+                  <TableColumn fx:id="LVClm" prefWidth="121.0" style="-fx-background-color: #A2A5A5;" text="Last Viewed" />
                </columns>
             </TableView>
             <BorderPane layoutX="14.0" layoutY="39.0" prefHeight="180.0" prefWidth="310.0" style="-fx-background-color: grey;">
@@ -75,12 +75,12 @@
                   <DropShadow />
                </effect>
             </JFXButton>
-            <JFXButton layoutX="636.0" layoutY="212.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Add To Category">
+            <JFXButton layoutX="472.0" layoutY="212.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Add To Category">
                <effect>
                   <DropShadow />
                </effect>
             </JFXButton>
-            <JFXButton layoutX="784.0" layoutY="212.0" onAction="#openPersonalRating" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Add Personal Rating">
+            <JFXButton layoutX="674.0" layoutY="212.0" onAction="#openPersonalRating" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Add Personal Rating">
                <effect>
                   <DropShadow />
                </effect>
