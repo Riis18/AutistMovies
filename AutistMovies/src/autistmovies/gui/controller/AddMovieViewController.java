@@ -174,6 +174,8 @@ public class AddMovieViewController implements Initializable {
         comboCat1.setButtonCell(buttonCell1);
         comboCat2.setButtonCell(buttonCell2);
         comboCat3.setButtonCell(buttonCell3);
+        combo.getSelectionModel().selectFirst();
+        comboRat.getSelectionModel().selectFirst();
             
     }    
 
