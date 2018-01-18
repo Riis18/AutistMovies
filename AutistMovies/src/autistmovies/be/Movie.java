@@ -19,7 +19,7 @@ public class Movie {
     public int lastview;
 
     
-    public void setId(int aInt) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -27,20 +27,20 @@ public class Movie {
        this.name = name;
     }
 
-    public void setRating(String string) {
+    public void setRating(Float rating) {
         this.rating = rating;
     }
          
           
-    public void setFileLink(String string) {
+    public void setFileLink(String filelink) {
         this.filelink = filelink;
     }
 
-    public void setLastview(int aInt) {
+    public void setLastview(int lastview) {
         this.lastview = lastview;
     }
 
-    public void setPersonalrating(String string) {
+    public void setPersonalrating(Float personalrating) {
         this.personalrating = personalrating;
     }
 

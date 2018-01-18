@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -86,9 +88,9 @@ public class MainViewController implements Initializable {
         IMDBClm.setCellValueFactory(
                 new PropertyValueFactory("IMDB Rating"));
         NameClm.setCellValueFactory(
-                new PropertyValueFactory("Name"));
+                new PropertyValueFactory("name"));
         PRClm.setCellValueFactory(
-                new PropertyValueFactory("Personal Rating"));
+                new PropertyValueFactory("personalrating"));
         LVClm.setCellValueFactory(
                 new PropertyValueFactory("Last Viewed"));
         
@@ -108,10 +110,15 @@ public class MainViewController implements Initializable {
                 new PropertyValueFactory("Name"));
         // Loads all the songs in every Categorylist
         mvm.loadMoviesInCategory();
+        //mCatList.setItems(FXCollections.observableArrayList(cList.getSelectionModel().getSelectedItem().getMovieList()));
     }    
 
     @FXML
     private void play(ActionEvent event) {
+        
+        Movie moviePlaying = mList.getSelectionModel().getSelectedItem();
+        mvm.playMovie(moviePlaying);
+        media.setMediaPlayer(mvm.getMediaPlayer());
     }
 
     @FXML
@@ -149,6 +156,11 @@ public class MainViewController implements Initializable {
 
         stage.setScene(new Scene(root1));
         stage.show();
+    }
+
+    @FXML
+    private void getMoviesInCat(MouseEvent event) {
+        mCatList.setItems(FXCollections.observableArrayList(cList.getSelectionModel().getSelectedItem().getMovieList()));
     }
     
     

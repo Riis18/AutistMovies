@@ -41,7 +41,7 @@
                   <DropShadow />
                </effect>
             </JFXButton>
-            <TableView fx:id="cList" layoutX="12.0" layoutY="239.0" prefHeight="406.0" prefWidth="187.0" style="-fx-background-color: #A2A5A5; -fx-background-radius: 0.5em;">
+            <TableView fx:id="cList" layoutX="12.0" layoutY="239.0" onMouseClicked="#getMoviesInCat" prefHeight="406.0" prefWidth="187.0" style="-fx-background-color: #A2A5A5; -fx-background-radius: 0.5em;">
               <columns>
                 <TableColumn fx:id="CClm" prefWidth="185.0" style="-fx-background-color: #A2A5A5;" text="Category" />
               </columns>

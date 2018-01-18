@@ -55,13 +55,13 @@ public class AddMovieViewController implements Initializable {
     @FXML
     private JFXComboBox<String> combo;
     @FXML
-    private JFXComboBox<String> combo1;
-    @FXML
     private JFXComboBox<Category> comboCat1;
     @FXML
     private JFXComboBox<Category> comboCat2;
     @FXML
     private JFXComboBox<Category> comboCat3;
+    @FXML
+    private JFXComboBox<String> comboRat;
     
 
     /**
@@ -69,7 +69,7 @@ public class AddMovieViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        combo1.getItems().addAll(comboList);
+        comboRat.getItems().addAll(comboList);
         try {
             mvm = MainViewModel.getInstance();
         } catch (IOException ex) {
@@ -190,7 +190,22 @@ public class AddMovieViewController implements Initializable {
         Movie movie = new Movie();
         movie.setId(-1);
         movie.setName(txtName.getText());
+        movie.setFileLink(txtFileLink.getText());
+        movie.setPersonalrating(Float.parseFloat(comboRat.getValue()));
+        Category selectedCategory1 = comboCat1.getValue();
         mvm.addMovie(movie);
+        selectedCategory1.getMovieList().add(movie);
+        mvm.addMovieToCategories(selectedCategory1, movie);
+        if(!comboCat2.getValue().getName().isEmpty()) {
+            Category selectedCategory2 = comboCat2.getValue();
+            selectedCategory2.getMovieList().add(movie);
+            mvm.addMovieToCategories(selectedCategory2, movie);
+        } else if(!comboCat3.getValue().getName().isEmpty()) {
+            Category selectedCategory3 = comboCat3.getValue();
+            selectedCategory3.getMovieList().add(movie);
+            mvm.addMovieToCategories(selectedCategory3, movie);
+        }
+            
         }
         
         Stage stage = (Stage) saveBtn.getScene().getWindow();

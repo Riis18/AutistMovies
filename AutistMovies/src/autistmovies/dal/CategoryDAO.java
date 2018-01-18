@@ -40,7 +40,7 @@ public class CategoryDAO {
                       
             while (rs.next()) {
                 Category c = new Category();
-                c.setId(rs.getInt("id"));
+                c.setId(rs.getInt("CategoryId"));
                 c.setName(rs.getString("name"));
 
 
@@ -58,7 +58,7 @@ public class CategoryDAO {
         public void remove(Category selectedCategory) {
         try (Connection con = dbConnector.getConnection()) {
             String sql
-                    = "DELETE FROM Category WHERE categoryID=?";
+                    = "DELETE FROM Category WHERE categoryId=?";
             PreparedStatement pstmt
                     = con.prepareStatement(sql);
             pstmt.setInt(1, selectedCategory.getId());
@@ -95,8 +95,8 @@ public class CategoryDAO {
     }
         public void addMovieToCategory(Category category, Movie movie) {
         
-                try (Connection con = dbConnector.getConnection()) {
-           String sql = "INSERT INTO Category"
+                try (Connection con = cm.getConnection()) {
+           String sql = "INSERT INTO CategoryMovie"
                    + "(MovieId, CategoryId)"
                    + "VALUES (?,?)";
            PreparedStatement pstmt
@@ -120,19 +120,19 @@ public class CategoryDAO {
             try (Connection con = cm.getConnection()) {
 
             PreparedStatement pstmt
-                    = con.prepareStatement("Select * FROM CategoryMovie, Movie, Category " + "where CategoryMovie.MovieId = Movie.id AND CategoryMovie.CategoryId = Category.id");
+                    = con.prepareStatement("Select * FROM CategoryMovie, Movie, Category " + "where CategoryMovie.MovieId = Movie.MovieId AND CategoryMovie.CategoryId = Category.CategoryId");
                       ResultSet rs = pstmt.executeQuery();
                       
                       
                 while (rs.next()) {
                 Category c = new Category();
                 Movie m = new Movie();
-                c.setId(rs.getInt("id"));
-                m.setId(rs.getInt("id"));
+                c.setId(rs.getInt("CategoryId"));
+                m.setId(rs.getInt("MovieId"));
                 m.setName(rs.getString("name"));
-                m.setRating(rs.getString("rating"));
+                m.setRating(rs.getFloat("rating"));
                 m.setFileLink(rs.getString("filelink"));
-                m.setPersonalrating(rs.getString("personalrating"));
+                m.setPersonalrating(rs.getFloat("personalrating"));
 
                     for (int i = 0; i < allCategories.size(); i++) { 
                     if(allCategories.get(i).getId() == c.getId() ) 

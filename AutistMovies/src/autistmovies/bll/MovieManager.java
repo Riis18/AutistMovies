@@ -36,7 +36,7 @@ public class MovieManager {
     * a list that returns all movies
     */
     public List<Movie> getAllMovies() {
-        return mDAO.getAllMovies(FileLink);
+        return mDAO.getAllMovies();
     }
     
     

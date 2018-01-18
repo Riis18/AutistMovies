@@ -27,8 +27,7 @@ public class MovieDAO {
     
     private DataBaseConnector cm = new DataBaseConnector();
 
-    public List<Movie> getAllMovies(
-            String Movie) {
+    public List<Movie> getAllMovies() {
 
         List<Movie> allMovies = new ArrayList();
 
@@ -39,12 +38,12 @@ public class MovieDAO {
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Movie m = new Movie();
-                m.setId(rs.getInt("id"));
+                m.setId(rs.getInt("MovieId"));
                 m.setName(rs.getString("name"));
-                m.setRating(rs.getString("rating"));
+                m.setRating(rs.getFloat("rating"));
                 m.setFileLink(rs.getString("filelink"));
                 m.setLastview(rs.getInt("lastview"));
-                m.setPersonalrating(rs.getString("personalrating"));
+                m.setPersonalrating(rs.getFloat("personalrating"));
 
                 allMovies.add(m);
             }
@@ -65,14 +64,15 @@ public class MovieDAO {
         {
             String sql
                     = "INSERT INTO Movie"
-                    + "(name, rating, filelink) "
-                    + "VALUES(?,?,?,?)";
+                    + "(name, rating, filelink, lastview, personalrating) "
+                    + "VALUES(?,?,?,?,?)";
 
             PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            Movie m = new Movie();
-            pstmt.setString(1, m.getName());
-            pstmt.setFloat(2, m.getRating());
-            pstmt.setString(3, m.getFileLink());
+            pstmt.setString(1, movie.getName());
+            pstmt.setFloat(2, movie.getRating());
+            pstmt.setString(3, movie.getFileLink());
+            pstmt.setInt(4, movie.getLastview());
+            pstmt.setFloat(5, movie.getPersonalrating());
             
             int affected = pstmt.executeUpdate();
             if(affected<1)
@@ -94,7 +94,7 @@ public class MovieDAO {
             public void remove(Movie selectedMovie) {
         try (Connection con = dbConnector.getConnection()) {
             String sql
-                    = "DELETE FROM Movie WHERE MovieID=?";
+                    = "DELETE FROM Movie WHERE MovieId=?";
             PreparedStatement pstmt
                     = con.prepareStatement(sql);
             pstmt.setInt(1, selectedMovie.getId());

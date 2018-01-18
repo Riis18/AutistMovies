@@ -12,6 +12,7 @@ import autistmovies.bll.MovieManager;
 import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.media.MediaPlayer;
 
 /**
  *
@@ -105,5 +106,13 @@ public class MainViewModel {
             instance = new MainViewModel();
         }
         return instance;
+    }
+    
+    public MediaPlayer getMediaPlayer() {
+        return mm.getMediaPlayer();
+    }
+    
+    public void playMovie(Movie moviePlaying) {
+        mm.PlayMovie(moviePlaying);
     }
 }

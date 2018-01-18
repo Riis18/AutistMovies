@@ -72,7 +72,7 @@
                   </Label>
                </children>
             </Pane>
-            <JFXComboBox fx:id="combo1" layoutX="229.0" layoutY="140.0" prefHeight="25.0" prefWidth="297.0" />
+            <JFXComboBox fx:id="comboRat" layoutX="229.0" layoutY="140.0" prefHeight="25.0" prefWidth="297.0" />
             <JFXComboBox fx:id="comboCat1" layoutX="229.0" layoutY="178.0" prefHeight="25.0" prefWidth="95.0" />
             <JFXComboBox fx:id="comboCat2" layoutX="340.0" layoutY="178.0" prefHeight="25.0" prefWidth="95.0" />
             <JFXComboBox fx:id="comboCat3" layoutX="446.0" layoutY="178.0" prefHeight="25.0" prefWidth="80.0" />
