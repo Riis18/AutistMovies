@@ -56,6 +56,7 @@ public class PersonalRatingViewController extends MainViewController implements 
 
     @FXML
     private void SavePR(ActionEvent event) {
+        
         mList.setEditable(true);
         PRClm.setCellFactory(TextFieldTableCell.forTableColumn());
         PRClm.setOnEditCommit(new EventHandler<CellEditEvent<Movie, String>>()

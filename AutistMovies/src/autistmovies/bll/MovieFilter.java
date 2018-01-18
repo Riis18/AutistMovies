@@ -23,12 +23,12 @@ public class MovieFilter {
         for (Movie movie : movies) {
             String name = movie.getName().trim().toLowerCase();
             String personalrating = movie.getPersonalrating().trim().toLowerCase();
-//            String rating = movie.getRating().trim().toLowerCase();
+            String rating = movie.getRating().trim().toLowerCase();
             
             if(name.contains(searchQuery.toLowerCase().trim())
                     
                     || personalrating.contains(searchQuery.toLowerCase().trim())
-//                    || rating.contains(searchQuery.toLowerCase().trim())
+                    || rating.contains(searchQuery.toLowerCase().trim())
                     && !result.contains(movie)) {
                 result.add(movie);
             }
