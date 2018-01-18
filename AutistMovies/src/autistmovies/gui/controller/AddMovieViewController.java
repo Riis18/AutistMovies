@@ -191,7 +191,7 @@ public class AddMovieViewController implements Initializable {
         movie.setId(-1);
         movie.setName(txtName.getText());
         movie.setFileLink(txtFileLink.getText());
-        movie.setPersonalrating(Float.parseFloat(comboRat.getValue()));
+        movie.setPersonalrating(String.valueOf(comboRat.getValue()));
         Category selectedCategory1 = comboCat1.getValue();
         mvm.addMovie(movie);
         selectedCategory1.getMovieList().add(movie);

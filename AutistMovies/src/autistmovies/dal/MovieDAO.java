@@ -40,10 +40,10 @@ public class MovieDAO {
                 Movie m = new Movie();
                 m.setId(rs.getInt("MovieId"));
                 m.setName(rs.getString("name"));
-                m.setRating(rs.getFloat("rating"));
+                m.setRating(rs.getString("rating"));
                 m.setFileLink(rs.getString("filelink"));
                 m.setLastview(rs.getString("lastview"));
-                m.setPersonalrating(rs.getFloat("personalrating"));
+                m.setPersonalrating(rs.getString("personalrating"));
 
                 allMovies.add(m);
             }
@@ -69,10 +69,10 @@ public class MovieDAO {
 
             PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, movie.getName());
-            pstmt.setFloat(2, movie.getRating());
+            pstmt.setString(2, movie.getRating());
             pstmt.setString(3, movie.getFileLink());
             pstmt.setString(4, movie.getLastview());
-            pstmt.setFloat(5, movie.getPersonalrating());
+            pstmt.setString(5, movie.getPersonalrating());
             
             int affected = pstmt.executeUpdate();
             if(affected<1)
@@ -114,10 +114,10 @@ public class MovieDAO {
             PreparedStatement pstmt
                     = con.prepareStatement(sql);
             pstmt.setString(1, movie.getName());
-            pstmt.setFloat(2, movie.getRating());
+            pstmt.setString(2, movie.getRating());
             pstmt.setString(3, movie.getFileLink());
             pstmt.setString(4, movie.getLastview());
-            pstmt.setFloat(5, movie.getPersonalrating());
+            pstmt.setString(5, movie.getPersonalrating());
             pstmt.setInt(6, movie.getId());
             
             int affected = pstmt.executeUpdate();

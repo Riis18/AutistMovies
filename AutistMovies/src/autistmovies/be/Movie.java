@@ -15,8 +15,8 @@ public class Movie {
    
     public String name;
     private int id;
-    public float rating;
-    public float personalrating;
+    public String rating;
+    public String personalrating;
     public String filelink;
     public String lastview;
 
@@ -29,7 +29,7 @@ public class Movie {
        this.name = name;
     }
 
-    public void setRating(Float rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
          
@@ -42,7 +42,7 @@ public class Movie {
         this.lastview = lastview;
     }
 
-    public void setPersonalrating(Float personalrating) {
+    public void setPersonalrating(String personalrating) {
         this.personalrating = personalrating;
     }
 
@@ -56,7 +56,7 @@ public class Movie {
         return id;
     }
 
-    public float getRating() {
+    public String getRating() {
         return rating;
     }
     
@@ -64,7 +64,7 @@ public class Movie {
         return filelink; 
      }
     
-    public float getPersonalrating() {
+    public String getPersonalrating() {
         return personalrating;
     }
 

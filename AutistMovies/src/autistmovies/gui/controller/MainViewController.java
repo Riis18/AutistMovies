@@ -7,6 +7,7 @@ package autistmovies.gui.controller;
 
 import autistmovies.be.Category;
 import autistmovies.be.Movie;
+import autistmovies.bll.MovieFilter;
 import autistmovies.gui.model.MainViewModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSlider;
@@ -19,7 +20,9 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +48,8 @@ public class MainViewController implements Initializable {
     
     private MainViewModel mvm;
     DatePicker datePicker = new DatePicker(LocalDate.now());
+    private final ObservableList<Movie> searchedMovies;
+    private final MovieFilter movieFilter;
 
     @FXML
     private JFXButton clearBtn;
@@ -77,11 +82,18 @@ public class MainViewController implements Initializable {
     @FXML
     private JFXSlider vSlider;
 
+    
+    public MainViewController() {
+        this.searchedMovies = FXCollections.observableArrayList();
+        this.movieFilter = new MovieFilter();
+    }
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         
         // Gets the instance of MainViewModel
         try {
@@ -119,6 +131,7 @@ public class MainViewController implements Initializable {
         // Loads all the songs in every Categorylist
         mvm.loadMoviesInCategory();
         //mCatList.setItems(FXCollections.observableArrayList(cList.getSelectionModel().getSelectedItem().getMovieList()));
+        searchMovie();
     }    
 
     @FXML
@@ -185,6 +198,14 @@ public class MainViewController implements Initializable {
         mvm.setVolume(vSlider);
     }
     
-    
-    
+        /*
+    * Searches through songs in song table
+    */
+    private void searchMovie() {
+        txtSearch.textProperty().addListener((ObservableValue<? extends String> listener, String oldQuery, String newQuery)
+        -> {
+        searchedMovies.setAll(movieFilter.search(mvm.getMovies(), newQuery));
+        mList.setItems(searchedMovies);
+        });
+    }
 }

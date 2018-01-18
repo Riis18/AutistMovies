@@ -130,9 +130,9 @@ public class CategoryDAO {
                 c.setId(rs.getInt("CategoryId"));
                 m.setId(rs.getInt("MovieId"));
                 m.setName(rs.getString("name"));
-                m.setRating(rs.getFloat("rating"));
+                m.setRating(rs.getString("rating"));
                 m.setFileLink(rs.getString("filelink"));
-                m.setPersonalrating(rs.getFloat("personalrating"));
+                m.setPersonalrating(rs.getString("personalrating"));
 
                     for (int i = 0; i < allCategories.size(); i++) { 
                     if(allCategories.get(i).getId() == c.getId() ) 
