@@ -28,6 +28,7 @@ public class MainViewModel {
     public ObservableList<Category> categories;
     public ObservableList<Movie> selectedMovie;
     public ObservableList<Movie> movieList;
+    public ObservableList<Movie> mCatList;
     private static MainViewModel instance;
     
     public MainViewModel() throws IOException{
@@ -131,5 +132,8 @@ public class MainViewModel {
     
     public void deleteMovie(Movie selectedMovie) {
         mm.remove(selectedMovie);
+        movieList.remove(selectedMovie);
+        mCatList.remove(selectedMovie);
+        
     }
 }
