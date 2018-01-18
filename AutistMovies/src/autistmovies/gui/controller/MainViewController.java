@@ -83,12 +83,6 @@ public class MainViewController implements Initializable {
     private TableColumn<Movie, Integer> LVClm;
     @FXML
     private JFXSlider vSlider;
-    @FXML
-    private TableColumn<?, ?> CTClm1;
-    @FXML
-    private TableColumn<?, ?> CTClm2;
-    @FXML
-    private TableColumn<?, ?> CTClm3;
 
     
     public MainViewController() {
@@ -152,6 +146,7 @@ public class MainViewController implements Initializable {
         LocalDate localDate = datePicker.getValue();
         moviePlaying.setLastview(localDate.toString());
         mvm.editMovie(moviePlaying);
+        mvm.loadMovies();
         mvm.setVolume(vSlider);
         } else {
             mvm.pauseMovie(moviePlaying);
@@ -161,6 +156,8 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void openPersonalRating(ActionEvent event) throws IOException {
+        Movie movie = mList.getSelectionModel().getSelectedItem();
+        mvm.addSelectedMovie(movie);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/autistmovies/gui/view/PersonalRatingView.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
 

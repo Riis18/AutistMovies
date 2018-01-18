@@ -198,11 +198,11 @@ public class AddMovieViewController implements Initializable {
         mvm.addMovie(movie);
         selectedCategory1.getMovieList().add(movie);
         mvm.addMovieToCategories(selectedCategory1, movie);
-        if(!comboCat2.getValue().getName().isEmpty()) {
+        if(!comboCat2.getButtonCell().isEmpty()) {
             Category selectedCategory2 = comboCat2.getValue();
             selectedCategory2.getMovieList().add(movie);
             mvm.addMovieToCategories(selectedCategory2, movie);
-        } else if(!comboCat3.getValue().getName().isEmpty()) {
+        } if(!comboCat3.getButtonCell().isEmpty()) {
             Category selectedCategory3 = comboCat3.getValue();
             selectedCategory3.getMovieList().add(movie);
             mvm.addMovieToCategories(selectedCategory3, movie);

@@ -9,8 +9,11 @@ import autistmovies.be.Movie;
 import autistmovies.gui.model.MainViewModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -45,31 +48,30 @@ public class PersonalRatingViewController extends MainViewController implements 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        try {
+           mvm = MainViewModel.getInstance();
+        } catch (IOException ex) {
+            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         comboP.getItems().addAll(comboList);
     }    
     
-        
-       public Movie getSelectedMovie()
-    {
-        return mList.getSelectionModel().getSelectedItem();
-    }
-
     @FXML
     private void SavePR(ActionEvent event) {
         
-        mList.setEditable(true);
-        PRClm.setCellFactory(TextFieldTableCell.forTableColumn());
-        PRClm.setOnEditCommit(new EventHandler<CellEditEvent<Movie, String>>()
-        {
-            public void handle(CellEditEvent<Movie, String> pr)
-            {
-                String movieName = pr.getTableView().getItems().get(pr.getTablePosition().getRow()).getName();
-                String personalrating = (pr.getNewValue());
-                Movie personalRating = getSelectedMovie();
-                personalRating.setPersonalrating(personalrating.valueOf(pr));
-                mvm.editMovie(personalRating);
-            }
-            });
+        Movie movie = new Movie();
+        movie.setName(mvm.getSelectedMovie().get(0).getName());
+        movie.setId(mvm.getSelectedMovie().get(0).getId());
+        movie.setFileLink(mvm.getSelectedMovie().get(0).getFileLink());
+        movie.setLastview(mvm.getSelectedMovie().get(0).getLastview());
+        movie.setRating(mvm.getSelectedMovie().get(0).getRating());
+        movie.setPersonalrating(String.valueOf(comboP.getValue()));
+        mvm.editMovie(movie);
+        mvm.loadMovies();
+        mvm.getSelectedMovie().clear();
+        Stage stage = (Stage) cancelBtn.getScene().getWindow();
+        stage.close();
         
     }
 
