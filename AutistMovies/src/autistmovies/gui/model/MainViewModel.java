@@ -9,6 +9,7 @@ import autistmovies.be.Category;
 import autistmovies.be.Movie;
 import autistmovies.bll.CategoryManager;
 import autistmovies.bll.MovieManager;
+import com.jfoenix.controls.JFXSlider;
 import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -118,5 +119,13 @@ public class MainViewModel {
     
     public void editMovie(Movie movie) {
         mm.editMovie(movie);
+    }
+    
+    public void pauseMovie(Movie moviePlaying) {
+        mm.pauseMovie(moviePlaying);
+    }
+    
+    public void setVolume(JFXSlider vSlider) {
+        mm.setVolume(vSlider);
     }
 }

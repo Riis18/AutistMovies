@@ -9,6 +9,7 @@ import autistmovies.be.Category;
 import autistmovies.be.Movie;
 import autistmovies.gui.model.MainViewModel;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -73,6 +74,8 @@ public class MainViewController implements Initializable {
     private TableColumn<Movie, String> MICClm;
     @FXML
     private TableColumn<Movie, Integer> LVClm;
+    @FXML
+    private JFXSlider vSlider;
 
     /**
      * Initializes the controller class.
@@ -121,11 +124,18 @@ public class MainViewController implements Initializable {
     @FXML
     private void play(ActionEvent event) {
         Movie moviePlaying = mList.getSelectionModel().getSelectedItem();
+        if (playPause.getText().equals("Play")) {
         mvm.playMovie(moviePlaying);
+        playPause.setText("Pause");
         media.setMediaPlayer(mvm.getMediaPlayer());
         LocalDate localDate = datePicker.getValue();
         moviePlaying.setLastview(localDate.toString());
         mvm.editMovie(moviePlaying);
+        mvm.setVolume(vSlider);
+        } else {
+            mvm.pauseMovie(moviePlaying);
+            playPause.setText("Play"); 
+        }
     }
 
     @FXML
@@ -168,6 +178,11 @@ public class MainViewController implements Initializable {
     @FXML
     private void getMoviesInCat(MouseEvent event) {
         mCatList.setItems(FXCollections.observableArrayList(cList.getSelectionModel().getSelectedItem().getMovieList()));
+    }
+
+    @FXML
+    private void vSlider(MouseEvent event) {
+        mvm.setVolume(vSlider);
     }
     
     
