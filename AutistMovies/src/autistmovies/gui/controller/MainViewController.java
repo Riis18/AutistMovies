@@ -184,8 +184,9 @@ public class MainViewController implements Initializable {
     @FXML
     private void deleteMovie(ActionEvent event) {
         Movie selectedMovie = mList.getSelectionModel().getSelectedItem();
+        
         Alert deleteAlert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Delete", ButtonType.YES, ButtonType.NO);
-          deleteAlert.setContentText("Are you sure you want to delete " + selectedMovie.getName() + "?");
+          deleteAlert.setContentText("OBS! Remember to delete movie from category! Are you sure you want to delete " + selectedMovie.getName() + "?");
           deleteAlert.showAndWait();
           if (deleteAlert.getResult() == ButtonType.YES) {
               mvm.deleteMovie(selectedMovie);
