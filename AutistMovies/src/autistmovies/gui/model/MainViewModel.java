@@ -115,4 +115,8 @@ public class MainViewModel {
     public void playMovie(Movie moviePlaying) {
         mm.PlayMovie(moviePlaying);
     }
+    
+    public void editMovie(Movie movie) {
+        mm.editMovie(movie);
+    }
 }

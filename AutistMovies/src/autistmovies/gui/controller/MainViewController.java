@@ -12,6 +12,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +25,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -39,6 +43,7 @@ import javafx.stage.Stage;
 public class MainViewController implements Initializable {
     
     private MainViewModel mvm;
+    DatePicker datePicker = new DatePicker(LocalDate.now());
 
     @FXML
     private JFXButton clearBtn;
@@ -92,7 +97,7 @@ public class MainViewController implements Initializable {
         PRClm.setCellValueFactory(
                 new PropertyValueFactory("personalrating"));
         LVClm.setCellValueFactory(
-                new PropertyValueFactory("Last Viewed"));
+                new PropertyValueFactory("lastview"));
         
         // Loads all movies
         mvm.loadMovies();
@@ -115,10 +120,12 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void play(ActionEvent event) {
-        
         Movie moviePlaying = mList.getSelectionModel().getSelectedItem();
         mvm.playMovie(moviePlaying);
         media.setMediaPlayer(mvm.getMediaPlayer());
+        LocalDate localDate = datePicker.getValue();
+        moviePlaying.setLastview(localDate.toString());
+        mvm.editMovie(moviePlaying);
     }
 
     @FXML

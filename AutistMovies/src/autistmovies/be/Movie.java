@@ -5,6 +5,8 @@
  */
 package autistmovies.be;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Jesper
@@ -16,7 +18,7 @@ public class Movie {
     public float rating;
     public float personalrating;
     public String filelink;
-    public int lastview;
+    public String lastview;
 
     
     public void setId(int id) {
@@ -36,7 +38,7 @@ public class Movie {
         this.filelink = filelink;
     }
 
-    public void setLastview(int lastview) {
+    public void setLastview(String lastview) {
         this.lastview = lastview;
     }
 
@@ -66,7 +68,7 @@ public class Movie {
         return personalrating;
     }
 
-    public int getLastview() {
+    public String getLastview() {
         return lastview;
     }
    

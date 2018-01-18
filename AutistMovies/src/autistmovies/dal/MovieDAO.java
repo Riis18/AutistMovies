@@ -42,7 +42,7 @@ public class MovieDAO {
                 m.setName(rs.getString("name"));
                 m.setRating(rs.getFloat("rating"));
                 m.setFileLink(rs.getString("filelink"));
-                m.setLastview(rs.getInt("lastview"));
+                m.setLastview(rs.getString("lastview"));
                 m.setPersonalrating(rs.getFloat("personalrating"));
 
                 allMovies.add(m);
@@ -71,7 +71,7 @@ public class MovieDAO {
             pstmt.setString(1, movie.getName());
             pstmt.setFloat(2, movie.getRating());
             pstmt.setString(3, movie.getFileLink());
-            pstmt.setInt(4, movie.getLastview());
+            pstmt.setString(4, movie.getLastview());
             pstmt.setFloat(5, movie.getPersonalrating());
             
             int affected = pstmt.executeUpdate();
@@ -100,6 +100,30 @@ public class MovieDAO {
             pstmt.setInt(1, selectedMovie.getId());
 
             pstmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+            
+        public void edit(Movie movie) {
+        try (Connection con = cm.getConnection()) {
+            String sql
+                    = "UPDATE Movie SET "
+                    +"name=?, rating=?, filelink=?, lastview=?, personalrating=? "
+                    +"WHERE MovieId=?";
+            PreparedStatement pstmt
+                    = con.prepareStatement(sql);
+            pstmt.setString(1, movie.getName());
+            pstmt.setFloat(2, movie.getRating());
+            pstmt.setString(3, movie.getFileLink());
+            pstmt.setString(4, movie.getLastview());
+            pstmt.setFloat(5, movie.getPersonalrating());
+            pstmt.setInt(6, movie.getId());
+            
+            int affected = pstmt.executeUpdate();
+            if (affected<1)
+                throw new SQLException("Can't edit movie");
+            
         } catch (SQLException ex) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

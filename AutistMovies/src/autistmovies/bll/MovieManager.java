@@ -99,4 +99,8 @@ public class MovieManager {
     public MediaPlayer getMediaPlayer() {
         return mp;
     }
+    
+    public void editMovie(Movie movie) {
+        mDAO.edit(movie);
+    }
 }
