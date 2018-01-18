@@ -56,14 +56,7 @@ public class CategoryDAO {
      }
                
         public void remove(Category selectedCategory) {
-        try (Connection con = dbConnector.getConnection()) {
-            String sql2
-                    = "DELETE FFROM CategoryMovie WHERE categoryId=?";
-            PreparedStatement pstmt2
-                    = con.prepareStatement(sql2);
-            pstmt2.setInt(1, selectedCategory.getId());
-            pstmt2.execute();
-            
+        try (Connection con = cm.getConnection()) {
             String sql
                     = "DELETE FROM Category WHERE categoryId=?";
             PreparedStatement pstmt

@@ -33,7 +33,7 @@
                </effect>
             </JFXButton>
             <JFXButton fx:id="clearBtn" layoutX="875.0" layoutY="213.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Search" />
-            <JFXButton layoutX="102.0" layoutY="652.0" prefHeight="25.0" prefWidth="99.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Delete Category" />
+            <JFXButton layoutX="102.0" layoutY="652.0" onAction="#deleteCategory" prefHeight="25.0" prefWidth="99.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Delete Category" />
             <JFXButton layoutX="603.0" layoutY="652.0" onAction="#addMovie" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Add Movie" />
             <JFXButton fx:id="playPause" layoutX="557.0" layoutY="200.0" onAction="#play" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Play" />
             <JFXTextField fx:id="txtSearch" focusColor="BLACK" layoutX="740.0" layoutY="213.0" promptText="Search Here" />

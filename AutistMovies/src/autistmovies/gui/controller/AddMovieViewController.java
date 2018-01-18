@@ -183,7 +183,7 @@ public class AddMovieViewController implements Initializable {
         Movie movie = new Movie();
         movie.setName(txtName.getText());
         movie.setId(mvm.getSelectedMovie().get(0).getId());
-//        mvm.edit(movie);
+        mvm.editMovie(movie);
         mvm.getSelectedMovie().clear();
             
         } else {

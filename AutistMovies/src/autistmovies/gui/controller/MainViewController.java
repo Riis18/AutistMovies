@@ -257,4 +257,23 @@ public class MainViewController implements Initializable {
             deleteAlert.close();
         }
     }
+
+    @FXML
+    private void deleteCategory(ActionEvent event) {
+        Category selectedCategory
+                = cList.getSelectionModel().getSelectedItem();
+        if(!selectedCategory.getMovieList().isEmpty()) {
+            Alert warningAlert = new Alert(Alert.AlertType.WARNING,"Category contains Movies, please remove them first");
+            warningAlert.showAndWait();
+        } else {
+        Alert deleteAlert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Delete", ButtonType.YES, ButtonType.NO);
+        deleteAlert.showAndWait();
+        if (deleteAlert.getResult() == ButtonType.YES) {
+            mvm.remove(selectedCategory);
+            mvm.loadCategories();
+        } else {
+            deleteAlert.close();
+        }
+        }
+    }
 }
