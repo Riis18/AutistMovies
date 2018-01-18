@@ -128,4 +128,8 @@ public class MainViewModel {
     public void setVolume(JFXSlider vSlider) {
         mm.setVolume(vSlider);
     }
+    
+    public void deleteMovie(Movie selectedMovie) {
+        mm.remove(selectedMovie);
+    }
 }

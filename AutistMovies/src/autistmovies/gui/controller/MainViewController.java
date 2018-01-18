@@ -29,6 +29,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -106,7 +108,7 @@ public class MainViewController implements Initializable {
         
                 // Sets all cells to their values for Movie table
         IMDBClm.setCellValueFactory(
-                new PropertyValueFactory("IMDB Rating"));
+                new PropertyValueFactory("rating"));
         NameClm.setCellValueFactory(
                 new PropertyValueFactory("name"));
         PRClm.setCellValueFactory(
@@ -175,6 +177,15 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void deleteMovie(ActionEvent event) {
+        Movie selectedMovie = mList.getSelectionModel().getSelectedItem();
+        Alert deleteAlert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Delete", ButtonType.YES, ButtonType.NO);
+          deleteAlert.setContentText("Are you sure you want to delete " + selectedMovie.getName() + "?");
+          deleteAlert.showAndWait();
+          if (deleteAlert.getResult() == ButtonType.YES) {
+              mvm.deleteMovie(selectedMovie);
+          } else {
+              deleteAlert.close();
+                 }
     }
 
     @FXML
@@ -207,5 +218,20 @@ public class MainViewController implements Initializable {
         searchedMovies.setAll(movieFilter.search(mvm.getMovies(), newQuery));
         mList.setItems(searchedMovies);
         });
+    }
+
+    @FXML
+    private void editMovie(ActionEvent event) throws IOException {
+        Movie movie = mList.getSelectionModel().getSelectedItem();
+        mvm.addSelectedMovie(movie);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/autistmovies/gui/view/AddMovieView.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        AddMovieViewController controller = fxmlLoader.getController();
+        controller.setModel(mvm);
+        Stage stage = new Stage();
+        
+        stage.setScene(new Scene(root1));
+        stage.show();
+        
     }
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="289.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autistmovies.gui.controller.AddMovieViewController">
+<AnchorPane id="AnchorPane" prefHeight="289.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autistmovies.gui.controller.AddMovieViewController">
    <children>
       <AnchorPane prefHeight="292.0" prefWidth="608.0" style="-fx-background-color: GREY; -fx-background-radius: 0.5em;">
          <children>
@@ -53,7 +53,7 @@
                   </Label>
                </children>
             </Pane>
-            <JFXComboBox fx:id="combo" layoutX="229.0" layoutY="96.0" prefHeight="25.0" prefWidth="297.0" />
+            <JFXComboBox fx:id="combo" layoutX="229.0" layoutY="96.0" onAction="#rating" prefHeight="25.0" prefWidth="297.0" />
             <Pane layoutY="140.0" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #919393; -fx-background-radius: 0.5em;">
                <children>
                   <Label alignment="CENTER" layoutX="39.0" layoutY="4.0" prefHeight="17.0" prefWidth="139.0" text="Personal Rating">

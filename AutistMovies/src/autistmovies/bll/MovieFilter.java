@@ -26,8 +26,9 @@ public class MovieFilter {
 //            String rating = movie.getRating().trim().toLowerCase();
             
             if(name.contains(searchQuery.toLowerCase().trim())
-//                    || rating.contains(searchQuery.toLowerCase().trim())
+                    
                     || personalrating.contains(searchQuery.toLowerCase().trim())
+//                    || rating.contains(searchQuery.toLowerCase().trim())
                     && !result.contains(movie)) {
                 result.add(movie);
             }

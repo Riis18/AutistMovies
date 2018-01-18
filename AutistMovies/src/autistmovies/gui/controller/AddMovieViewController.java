@@ -70,6 +70,7 @@ public class AddMovieViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         comboRat.getItems().addAll(comboList);
+        combo.getItems().addAll(comboList);
         try {
             mvm = MainViewModel.getInstance();
         } catch (IOException ex) {
@@ -236,6 +237,15 @@ public class AddMovieViewController implements Initializable {
         }
 
     
+    }
+
+    @FXML
+    private void rating(ActionEvent event) {
+        combo.getItems().addAll(comboList);
+    }
+    
+    public void setModel(MainViewModel model) {
+        this.mvm = model;
     }
     
 }
