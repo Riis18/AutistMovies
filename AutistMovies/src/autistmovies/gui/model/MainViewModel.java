@@ -133,7 +133,6 @@ public class MainViewModel {
     public void deleteMovie(Movie selectedMovie) {
         mm.remove(selectedMovie);
         movieList.remove(selectedMovie);
-        mCatList.remove(selectedMovie);
         
     }
 }

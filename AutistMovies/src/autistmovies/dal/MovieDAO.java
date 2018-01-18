@@ -93,12 +93,21 @@ public class MovieDAO {
     
             public void remove(Movie selectedMovie) {
         try (Connection con = cm.getConnection()) {
+            String sql2
+                    = "DELETE FROM CategoryMovie WHERE MovieId=?";
+            PreparedStatement pstmt2
+                    = con.prepareStatement(sql2);
+            pstmt2.setInt(1, selectedMovie.getId());
+            pstmt2.execute();
+            
             String sql
                     = "DELETE FROM Movie WHERE MovieId=?";
             PreparedStatement pstmt
                     = con.prepareStatement(sql);
             pstmt.setInt(1, selectedMovie.getId());
             pstmt.execute();
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

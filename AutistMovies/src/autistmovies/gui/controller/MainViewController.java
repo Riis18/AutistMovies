@@ -130,7 +130,7 @@ public class MainViewController implements Initializable {
         // Sets the cells to their values movies within categorylist
         MICClm.setCellValueFactory(
                 new PropertyValueFactory("Name"));
-        // Loads all the songs in every Categorylist
+        // Loads all the movies in every Categorylist
         mvm.loadMoviesInCategory();
         //mCatList.setItems(FXCollections.observableArrayList(cList.getSelectionModel().getSelectedItem().getMovieList()));
         searchMovie();
@@ -183,6 +183,7 @@ public class MainViewController implements Initializable {
           deleteAlert.showAndWait();
           if (deleteAlert.getResult() == ButtonType.YES) {
               mvm.deleteMovie(selectedMovie);
+              mCatList.setItems(mvm.getMovies());
           } else {
               deleteAlert.close();
                  }
