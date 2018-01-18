@@ -135,4 +135,9 @@ public class MainViewModel {
         movieList.remove(selectedMovie);
         
     }
+    
+    public void removeCategoryMovie(Movie selectedMovie, Category selectedCategory) {
+        cm.removeCategoryMovie(selectedMovie, selectedCategory);
+        categoryList.remove(selectedCategory.getMovieList().remove(selectedMovie));
+    }
 }

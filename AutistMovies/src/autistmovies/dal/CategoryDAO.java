@@ -156,5 +156,19 @@ public class CategoryDAO {
                     Level.SEVERE, null, ex);
         }
 }
+    
+    public void removeCategoryMovie(Movie selectedMovie, Category selectedCategory) {
+        try (Connection con = cm.getConnection()) {
+            String sql
+                    = "DELETE FROM CategoryMovie WHERE MovieId=? AND CategoryId=?";
+            PreparedStatement pstmt
+                    = con.prepareStatement(sql);
+            pstmt.setInt(1, selectedMovie.getId());
+            pstmt.setInt(2, selectedCategory.getId());
+            pstmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
  
 }

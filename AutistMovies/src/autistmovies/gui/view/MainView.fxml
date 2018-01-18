@@ -14,7 +14,7 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autistmovies.gui.controller.MainViewController">
+<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autistmovies.gui.controller.MainViewController">
    <children>
       <AnchorPane prefHeight="691.0" prefWidth="1142.0" style="-fx-background-color: GREY; -fx-background-radius: 0.5em;">
          <children>
@@ -27,14 +27,14 @@
                   </Label>
                </children>
             </Pane>
-            <JFXButton layoutX="285.0" layoutY="652.0" onAction="#deleteMovie" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Delete Movie">
+            <JFXButton layoutX="685.0" layoutY="652.0" onAction="#deleteMovie" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Delete Movie">
                <effect>
                   <DropShadow />
                </effect>
             </JFXButton>
             <JFXButton fx:id="clearBtn" layoutX="875.0" layoutY="213.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Search" />
             <JFXButton layoutX="102.0" layoutY="652.0" prefHeight="25.0" prefWidth="99.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Delete Category" />
-            <JFXButton layoutX="205.0" layoutY="652.0" onAction="#addMovie" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Add Movie" />
+            <JFXButton layoutX="603.0" layoutY="652.0" onAction="#addMovie" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Add Movie" />
             <JFXButton fx:id="playPause" layoutX="557.0" layoutY="200.0" onAction="#play" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Play" />
             <JFXTextField fx:id="txtSearch" focusColor="BLACK" layoutX="740.0" layoutY="213.0" promptText="Search Here" />
             <JFXButton layoutX="12.0" layoutY="652.0" onAction="#AddCategory" prefHeight="25.0" prefWidth="88.0" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Add Category">
@@ -83,6 +83,11 @@
             </JFXButton>
             <JFXSlider fx:id="vSlider" layoutX="472.0" layoutY="225.0" onDragDetected="#vSlider" />
             <JFXButton layoutX="384.0" layoutY="652.0" onAction="#editMovie" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Edit Movie">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </JFXButton>
+            <JFXButton layoutX="205.0" layoutY="652.0" onAction="#deleteMovieFromCategory" ripplerFill="RED" style="-fx-background-color: #6e6e6e;" text="Delete Movie From Category">
                <effect>
                   <DropShadow />
                </effect>

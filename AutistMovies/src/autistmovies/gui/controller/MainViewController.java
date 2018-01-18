@@ -83,6 +83,12 @@ public class MainViewController implements Initializable {
     private TableColumn<Movie, Integer> LVClm;
     @FXML
     private JFXSlider vSlider;
+    @FXML
+    private TableColumn<?, ?> CTClm1;
+    @FXML
+    private TableColumn<?, ?> CTClm2;
+    @FXML
+    private TableColumn<?, ?> CTClm3;
 
     
     public MainViewController() {
@@ -234,5 +240,21 @@ public class MainViewController implements Initializable {
         stage.setScene(new Scene(root1));
         stage.show();
         
+    }
+
+    @FXML
+    private void deleteMovieFromCategory(ActionEvent event) {
+        Movie selectedMovie
+                = mCatList.getSelectionModel().getSelectedItem();
+        Category selctedCategory
+                = cList.getSelectionModel().getSelectedItem();
+        Alert deleteAlert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Delete", ButtonType.YES, ButtonType.NO);
+        deleteAlert.showAndWait();
+        if (deleteAlert.getResult() == ButtonType.YES) {
+            mvm.removeCategoryMovie(selectedMovie, selctedCategory);
+            mCatList.setItems(FXCollections.observableArrayList(cList.getSelectionModel().getSelectedItem().getMovieList()));
+        } else {
+            deleteAlert.close();
+        }
     }
 }

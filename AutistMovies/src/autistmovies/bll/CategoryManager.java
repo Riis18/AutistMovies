@@ -44,4 +44,8 @@ public class CategoryManager {
       cDAO.getAllCatMovies();
     }
     
+    public void removeCategoryMovie(Movie selectedMovie, Category selectedCategory) {
+        cDAO.removeCategoryMovie(selectedMovie, selectedCategory);
+    }
+    
 }
