@@ -68,13 +68,13 @@ public class MainViewController implements Initializable {
     @FXML
     private TableView<Movie> mCatList;
     @FXML
-    private TableView<Movie> mList;
+     TableView<Movie> mList;
     @FXML
     private TableColumn<Movie, Float> IMDBClm;
     @FXML
     private TableColumn<Movie, String> NameClm;
     @FXML
-    private TableColumn<Movie, Float> PRClm;
+     TableColumn<Movie, String> PRClm;
     @FXML
     private TableColumn<Category, String> CClm;
     @FXML

@@ -14,13 +14,13 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autistmovies.gui.controller.MainViewController">
+<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autistmovies.gui.controller.MainViewController">
    <children>
-      <AnchorPane prefHeight="691.0" prefWidth="1142.0" style="-fx-background-color: GREY; -fx-background-radius: 0.5em;">
+      <AnchorPane prefHeight="691.0" prefWidth="941.0" style="-fx-background-color: GREY; -fx-background-radius: 0.5em;">
          <children>
-            <Pane layoutX="-1.0" layoutY="1.0" prefHeight="25.0" prefWidth="1142.0" style="-fx-background-color: #919393; -fx-background-radius: 0.5em;">
+            <Pane layoutX="-1.0" layoutY="1.0" prefHeight="25.0" prefWidth="941.0" style="-fx-background-color: #919393; -fx-background-radius: 0.5em;">
                <children>
-                  <Label alignment="CENTER" layoutX="374.0" layoutY="4.0" prefHeight="17.0" prefWidth="394.0" text="AutistMovies">
+                  <Label alignment="CENTER" layoutX="274.0" layoutY="4.0" prefHeight="17.0" prefWidth="394.0" text="AutistMovies">
                      <font>
                         <Font name="Rockwell Extra Bold" size="12.0" />
                      </font>
@@ -52,15 +52,12 @@
                   <TableColumn fx:id="MICClm" prefWidth="271.0" style="-fx-background-color: #A2A5A5;" text="Movies within selected category" />
                </columns>
             </TableView>
-            <TableView fx:id="mList" layoutX="472.0" layoutY="239.0" prefHeight="406.0" prefWidth="655.0" style="-fx-background-color: #A2A5A5; -fx-background-radius: 0.5em;">
+            <TableView fx:id="mList" layoutX="472.0" layoutY="239.0" prefHeight="406.0" prefWidth="459.0" style="-fx-background-color: #A2A5A5; -fx-background-radius: 0.5em;">
                <columns>
                   <TableColumn fx:id="IMDBClm" prefWidth="98.0" style="-fx-background-color: #A2A5A5;" text="IMDB Rating" />
                   <TableColumn fx:id="NameClm" prefWidth="119.0" style="-fx-background-color: #A2A5A5;" text="Name" />
-                  <TableColumn fx:id="PRClm" prefWidth="97.0" style="-fx-background-color: #A2A5A5;" text="Personal Rating" />
-                  <TableColumn fx:id="LVClm" prefWidth="121.0" style="-fx-background-color: #A2A5A5;" text="Last Viewed" />
-                  <TableColumn fx:id="CTClm1" prefWidth="73.0" style="-fx-background-color: #A2A5A5;" text="Category1" />
-                  <TableColumn fx:id="CTClm2" prefWidth="73.0" style="-fx-background-color: #A2A5A5;" text="Category2" />
-                  <TableColumn fx:id="CTClm3" prefWidth="73.0" style="-fx-background-color: #A2A5A5;" text="Category3" />
+                  <TableColumn fx:id="PRClm" prefWidth="118.0" style="-fx-background-color: #A2A5A5;" text="Personal Rating" />
+                  <TableColumn fx:id="LVClm" prefWidth="123.0" style="-fx-background-color: #A2A5A5;" text="Last Viewed" />
                </columns>
             </TableView>
             <BorderPane layoutX="12.0" layoutY="45.0" prefHeight="180.0" prefWidth="459.0" style="-fx-background-color: grey;">
