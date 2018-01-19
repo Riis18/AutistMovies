@@ -20,7 +20,7 @@ public class AutistMovies extends Application {
     
     @Override
     public void start(Stage stage) throws IOException { 
-        Parent root = FXMLLoader.load(getClass().getResource("gui/view/MainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("gui/view/StartScreen.fxml"));
 
         Scene scene = new Scene(root);
 

@@ -11,8 +11,14 @@ import autistmovies.bll.CategoryManager;
 import autistmovies.bll.MovieManager;
 import com.jfoenix.controls.JFXSlider;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.DatePicker;
 import javafx.scene.media.MediaPlayer;
 
 /**
@@ -23,11 +29,13 @@ public class MainViewModel {
     
     private final CategoryManager cm;
     private final MovieManager mm;
+    DatePicker datePicker = new DatePicker(LocalDate.now());
     public ObservableList<Category> categoryList;
     public ObservableList<Category> selectedCategory;
     public ObservableList<Category> categories;
     public ObservableList<Movie> selectedMovie;
     public ObservableList<Movie> movieList;
+    public ObservableList<Movie> moviePrList;
     public ObservableList<Movie> mCatList;
     private static MainViewModel instance;
     
@@ -40,6 +48,7 @@ public class MainViewModel {
             categories = FXCollections.observableArrayList();
             categoryList = FXCollections.observableArrayList();
             selectedCategory = FXCollections.observableArrayList();
+            moviePrList = FXCollections.observableArrayList();
 
     }
     
@@ -140,4 +149,19 @@ public class MainViewModel {
         cm.removeCategoryMovie(selectedMovie, selectedCategory);
         categoryList.remove(selectedCategory.getMovieList().remove(selectedMovie));
     }
+    
+    public ObservableList<Movie> moviesPrList() {
+        for (int i = 0; i < movieList.size(); i++) {
+            LocalDateTime dateMinusTwoYears = LocalDateTime.now().minusYears(2);
+            DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+            LocalDate lastViewDate = LocalDate.parse(movieList.get(i).getLastview(), formatter);
+            LocalDateTime localLastViewDate = LocalDateTime.of(lastViewDate, LocalDateTime.now().toLocalTime());
+            boolean afterTwoYears = localLastViewDate.isBefore(dateMinusTwoYears);
+            if(afterTwoYears == true && movieList.get(i).getPersonalrating() < 6)
+                moviePrList.add(movieList.get(i));
+        }
+        return moviePrList;
+    }
+    
+    
 }

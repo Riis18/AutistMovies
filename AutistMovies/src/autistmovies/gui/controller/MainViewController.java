@@ -78,13 +78,13 @@ public class MainViewController implements Initializable {
     @FXML
     private TableColumn<Movie, String> NameClm;
     @FXML
-     TableColumn<Movie, String> PRClm;
+     TableColumn<Movie, Float> PRClm;
     @FXML
     private TableColumn<Category, String> CClm;
     @FXML
     private TableColumn<Movie, String> MICClm;
     @FXML
-    private TableColumn<Movie, Integer> LVClm;
+    private TableColumn<Movie, String> LVClm;
     @FXML
     private JFXSlider vSlider;
     @FXML
