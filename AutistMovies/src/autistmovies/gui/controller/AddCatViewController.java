@@ -47,6 +47,9 @@ public class AddCatViewController implements Initializable {
         }
     }    
 
+    /*
+    Cancel the add category view
+    */
     @FXML
     private void cancelAddCat(ActionEvent event) {
         
@@ -56,25 +59,18 @@ public class AddCatViewController implements Initializable {
         stage.close();
     }
 
+    /*
+    Saves the category
+    */
     @FXML
     private void saveAddCat(ActionEvent event) {
          
-//        if (!mvm.getSelectedCategory().isEmpty()) { 
-//                
-//            Category Category = new Category();
-//            Category.setName(txtCT.getText());
-//            Category.setId(mvm.getSelectedCategory().get(0).getId());
-//            mvm.getSelectedCategory().clear();
-//            mvm.loadMoviesInCategory();
-//            
-//        } else {
             
             Category category = new Category();
             category.setName(txtCT.getText());
             category.setId(-1);
             
             mvm.addCategory(category);
-//        }
         Stage stage = (Stage) saveBtnCT.getScene().getWindow();
         stage.close();
     }

@@ -5,9 +5,6 @@
  */
 package autistmovies.be;
 
-import java.sql.Date;
-import java.time.LocalDate;
-
 /**
  *
  * @author Jesper
@@ -43,41 +40,65 @@ public class Movie {
         this.rating = rating;
     }
          
-          
+    /*
+    sets the filelink for the movie
+    */     
     public void setFileLink(String filelink) {
         this.filelink = filelink;
     }
 
+    /*
+    sets the lastview for the movie
+    */
     public void setLastview(String lastview) {
         this.lastview = lastview;
     }
 
+    /*
+    sets the personal rating for the movie
+    */
     public void setPersonalrating(Float personalrating) {
         this.personalrating = personalrating;
     }
 
-    
-    
+    /*
+    gets the name of the movie
+    */
     public String getName() {
         return name;
     }
 
+    /*
+    gets the id of the movie
+    */
     public int getId() {
         return id;
     }
 
+    /*
+    gets the rating of the movie
+    */
     public Float getRating() {
         return rating;
     }
     
+    /*
+    gets the filelink of the movie
+    */
     public String getFileLink(){
         return filelink; 
      }
     
+    /*
+    gets the personal rating of the movie
+    */
     public Float getPersonalrating() {
         return personalrating;
     }
 
+    /*
+    gets the lastview of the movie
+    */
     public String getLastview() {
         return lastview;
     }

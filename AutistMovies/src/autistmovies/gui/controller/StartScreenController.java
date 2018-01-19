@@ -24,7 +24,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -70,6 +69,9 @@ public class StartScreenController implements Initializable {
                 new PropertyValueFactory("personalrating"));
     }    
 
+    /*
+    deletes a movie from the table
+    */
     @FXML
     private void deleteMovie(ActionEvent event) {
         Movie selectedMovie = PrList.getSelectionModel().getSelectedItem();
@@ -79,13 +81,16 @@ public class StartScreenController implements Initializable {
           deleteAlert.showAndWait();
           if (deleteAlert.getResult() == ButtonType.YES) {
               mvm.deleteMovie(selectedMovie);
-              PrList.setItems(mvm.getMovies());
-              LvList.setItems(mvm.getMovies());
+              mvm.moviesPrList().remove(selectedMovie);
+              //PrList.setItems(mvm.moviesPrList());
           } else {
               deleteAlert.close();
                  }
     }
 
+    /*
+    cancels the start screen view and opens the main view
+    */
     @FXML
     private void cancelStartScreen(ActionEvent event) throws IOException {
         Stage stage = (Stage) cncBtn.getScene().getWindow();

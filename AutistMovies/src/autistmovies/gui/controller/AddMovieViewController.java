@@ -24,13 +24,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -76,16 +72,20 @@ public class AddMovieViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         comboRat.getItems().addAll(comboList);
         combo.getItems().addAll(comboList);
+        
         try {
             mvm = MainViewModel.getInstance();
         } catch (IOException ex) {
             Logger.getLogger(AddMovieViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         if(!mvm.getSelectedMovie().isEmpty()) 
         {
         txtName.setText(mvm.getSelectedMovie().get(0).getName());
         txtFileLink.setText(mvm.getSelectedMovie().get(0).getFileLink());
         }
+        
+        // sets the buttonCell for comboBox 1
         final ListCell<Category> buttonCell1 = new ListCell<Category>() {
         @Override
         protected void updateItem(Category category, boolean empty) {
@@ -97,6 +97,7 @@ public class AddMovieViewController implements Initializable {
             }
         }
     };
+        // sets the buttonCell for comboBox 2
         final ListCell<Category> buttonCell2 = new ListCell<Category>() {
         @Override
         protected void updateItem(Category category, boolean empty) {
@@ -108,6 +109,7 @@ public class AddMovieViewController implements Initializable {
             }
         }
     };
+        // sets the buttonCell for comboBox 3
         final ListCell<Category> buttonCell3 = new ListCell<Category>() {
         @Override
         protected void updateItem(Category category, boolean empty) {
@@ -122,6 +124,8 @@ public class AddMovieViewController implements Initializable {
         comboCat1.setItems(mvm.getCategories());
         comboCat2.setItems(mvm.getCategories());
         comboCat3.setItems(mvm.getCategories());
+        
+        //sets the cells for comboBox 1
         comboCat1.setCellFactory(new Callback<ListView<Category>, ListCell<Category>>(){
             @Override
             public ListCell<Category> call(ListView<Category> p) {
@@ -140,6 +144,7 @@ public class AddMovieViewController implements Initializable {
             }
         });
         
+        // sets the cell for comboBox 2
         comboCat2.setCellFactory(new Callback<ListView<Category>, ListCell<Category>>(){
             @Override
             public ListCell<Category> call(ListView<Category> p) {
@@ -158,6 +163,7 @@ public class AddMovieViewController implements Initializable {
             }
         });
         
+        // sets the cells for comboBox 3
         comboCat3.setCellFactory(new Callback<ListView<Category>, ListCell<Category>>(){
             @Override
             public ListCell<Category> call(ListView<Category> p) {
@@ -182,11 +188,15 @@ public class AddMovieViewController implements Initializable {
         combo.getSelectionModel().selectFirst();
         comboRat.getSelectionModel().selectFirst();
             
-    }    
-
+    }
+    
+    /*
+    gets the information from the user and save or edit the movie
+    */
     @FXML
     private void saveMovie(ActionEvent event) {
         Alert saveAlert = new Alert(Alert.AlertType.WARNING);
+        // if a movie is selected edits the movie.
         if(!mvm.getSelectedMovie().isEmpty()) {
         Movie movie = new Movie();
         movie.setName(txtName.getText());
@@ -201,7 +211,9 @@ public class AddMovieViewController implements Initializable {
         Stage stage = (Stage) saveBtn.getScene().getWindow();
         stage.close();
             
-        } else {
+        } 
+        // adds a new movie
+        else {
         
         LocalDate localDate = datePicker.getValue();
         Movie movie = new Movie();
@@ -212,6 +224,7 @@ public class AddMovieViewController implements Initializable {
         movie.setRating(Float.parseFloat(combo.getValue()));
         movie.setLastview(localDate.toString());
         Category selectedCategory1 = comboCat1.getValue();
+        // checks to see if the same name is already in the database
         if(mvm.getAllMoviesByName().contains(txtName.getText())) {
                     saveAlert.setContentText("OBS! Movie with that title already exists ");
                     saveAlert.showAndWait();
@@ -236,9 +249,9 @@ public class AddMovieViewController implements Initializable {
         }
      }
     
-    
-     
-    
+    /*
+    Cancels the add movie view
+    */
     @FXML
     private void cancelAddMovieView(ActionEvent event) {
         mvm.getSelectedMovie().clear();
@@ -247,6 +260,9 @@ public class AddMovieViewController implements Initializable {
         stage.close();
     }
 
+    /*
+    looks through the local system for a filelink
+    */
     @FXML
     private void chooseFile(ActionEvent event) {
         try {
@@ -264,12 +280,11 @@ public class AddMovieViewController implements Initializable {
 
     
     }
-
-    @FXML
-    private void rating(ActionEvent event) {
-        combo.getItems().addAll(comboList);
-    }
     
+    
+    /*
+    sets the model for MainViewModel
+    */
     public void setModel(MainViewModel model) {
         this.mvm = model;
     }

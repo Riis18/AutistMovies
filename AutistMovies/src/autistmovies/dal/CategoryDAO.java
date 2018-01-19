@@ -25,10 +25,11 @@ public class CategoryDAO {
     
         
     List<Category> allCategories = new ArrayList();
-    private DataBaseConnector dbConnector;
     private DataBaseConnector cm = new DataBaseConnector();
     
-            
+        /*
+        Gets all categories from database and puts them in a list
+        */   
         public List<Category> getAllCategories() {
 
         try (Connection con = cm.getConnection()) {
@@ -54,7 +55,9 @@ public class CategoryDAO {
         return allCategories;
     
      }
-               
+        /*
+         removes the category from the database by id
+        */
         public void remove(Category selectedCategory) {
         try (Connection con = cm.getConnection()) {
             String sql
@@ -69,8 +72,11 @@ public class CategoryDAO {
         }
     }
         
-            public void createCategory(Category category) 
-    {
+       /*
+        creates a category by taking information and inserts in the database
+        */
+       public void createCategory(Category category) 
+       {
         try (Connection con = cm.getConnection()) {
            String sql = "INSERT INTO category"
                    + "(Name)"
@@ -93,6 +99,10 @@ public class CategoryDAO {
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+       
+       /*
+       adds a movie to a category
+       */
         public void addMovieToCategory(Category category, Movie movie) {
         
                 try (Connection con = cm.getConnection()) {
@@ -115,6 +125,10 @@ public class CategoryDAO {
         }
                 
     }
+        
+    /*
+    selects all tables in the database and compare id    
+    */
     public void getAllCatMovies() {
                   
             try (Connection con = cm.getConnection()) {
@@ -134,6 +148,8 @@ public class CategoryDAO {
                 m.setFileLink(rs.getString("filelink"));
                 m.setPersonalrating(rs.getFloat("personalrating"));
 
+                    // goes through the list of categories and compare id's
+                    // if id's are equal it gets the movielist from the category and adds the movie
                     for (int i = 0; i < allCategories.size(); i++) { 
                     if(allCategories.get(i).getId() == c.getId() ) 
                     {
@@ -150,6 +166,9 @@ public class CategoryDAO {
         }
 }
     
+    /*
+    deletes a movie from a category
+    */
     public void removeCategoryMovie(Movie selectedMovie, Category selectedCategory) {
         try (Connection con = cm.getConnection()) {
             String sql

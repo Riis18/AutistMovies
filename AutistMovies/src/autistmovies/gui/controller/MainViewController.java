@@ -14,9 +14,7 @@ import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,8 +37,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -142,6 +138,9 @@ public class MainViewController implements Initializable {
         searchMovie();
     }    
 
+    /*
+    Plays the selected movie
+    */
     @FXML
     private void play(ActionEvent event) {
         Movie moviePlaying = mList.getSelectionModel().getSelectedItem();
@@ -161,6 +160,9 @@ public class MainViewController implements Initializable {
         }
     }
 
+    /*
+    Opens the personal rating view
+    */
     @FXML
     private void openPersonalRating(ActionEvent event) throws IOException {
         Movie movie = mList.getSelectionModel().getSelectedItem();
@@ -174,6 +176,9 @@ public class MainViewController implements Initializable {
         stage.show();
     }
 
+    /*
+    opens the add category view
+    */
     @FXML
     private void AddCategory(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/autistmovies/gui/view/AddCatView.fxml"));
@@ -185,6 +190,9 @@ public class MainViewController implements Initializable {
         stage.show();
     }
 
+    /*
+    deletes the movie and get an alert to confirm
+    */
     @FXML
     private void deleteMovie(ActionEvent event) {
         Movie selectedMovie = mList.getSelectionModel().getSelectedItem();
@@ -200,6 +208,9 @@ public class MainViewController implements Initializable {
                  }
     }
 
+    /*
+    opens the add movie view
+    */
     @FXML
     private void addMovie(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/autistmovies/gui/view/AddMovieView.fxml"));
@@ -211,18 +222,24 @@ public class MainViewController implements Initializable {
         stage.show();
     }
 
+    /*
+    sets movies in a category to the tableview
+    */
     @FXML
     private void getMoviesInCat(MouseEvent event) {
         mCatList.setItems(FXCollections.observableArrayList(cList.getSelectionModel().getSelectedItem().getMovieList()));
     }
 
+    /*
+    controls the volume slider
+    */
     @FXML
     private void vSlider(MouseEvent event) {
         mvm.setVolume(vSlider);
     }
     
-        /*
-    * Searches through songs in song table
+    /*
+    * Searches through movies in movie table
     */
     private void searchMovie() {
         txtSearch.textProperty().addListener((ObservableValue<? extends String> listener, String oldQuery, String newQuery)
@@ -232,6 +249,9 @@ public class MainViewController implements Initializable {
         });
     }
 
+    /*
+    opens up the edit movie view with information of the selected movie
+    */
     @FXML
     private void editMovie(ActionEvent event) throws IOException {
         Movie movie = mList.getSelectionModel().getSelectedItem();
@@ -247,6 +267,9 @@ public class MainViewController implements Initializable {
         
     }
 
+    /*
+    deletes the selected movie from a category
+    */
     @FXML
     private void deleteMovieFromCategory(ActionEvent event) {
         Movie selectedMovie
@@ -263,6 +286,9 @@ public class MainViewController implements Initializable {
         }
     }
 
+    /*
+    Tries to delete a category if its not empty an alert pops up
+    */
     @FXML
     private void deleteCategory(ActionEvent event) {
         Category selectedCategory
@@ -275,14 +301,15 @@ public class MainViewController implements Initializable {
         deleteAlert.showAndWait();
         if (deleteAlert.getResult() == ButtonType.YES) {
             mvm.remove(selectedCategory);
-//            mvm.loadCategories();
-//            cList.setItems(mvm.getCategories());
         } else {
             deleteAlert.close();
         }
         }
     }
 
+    /*
+    sets the mediaview to fullscreen
+    */
     @FXML
     private void fullscreen(ActionEvent event) {
         Stage stage = new Stage();

@@ -6,7 +6,6 @@
 package autistmovies.dal;
 
 import autistmovies.be.Movie;
-import autistmovies.be.Category;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,6 +26,9 @@ public class MovieDAO {
     
     private DataBaseConnector cm = new DataBaseConnector();
 
+    /*
+    gets all movies from the database
+    */
     public List<Movie> getAllMovies() {
 
         List<Movie> allMovies = new ArrayList();
@@ -91,7 +93,11 @@ public class MovieDAO {
         }
     }         
     
-            public void remove(Movie selectedMovie) {
+        
+        /*
+        deletes the selected movie from database
+        */
+        public void remove(Movie selectedMovie) {
         try (Connection con = cm.getConnection()) {
             String sql2
                     = "DELETE FROM CategoryMovie WHERE MovieId=?";
@@ -112,7 +118,10 @@ public class MovieDAO {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-            
+        
+        /*
+        updates the movie with new data
+        */
         public void edit(Movie movie) {
         try (Connection con = cm.getConnection()) {
             String sql
@@ -137,6 +146,9 @@ public class MovieDAO {
         }
     }
 
+    /*
+    gets all movie names
+    */
     public List<String> getAllMoviesByName() {
         List<String> getAllMoviesByName = new ArrayList();
 

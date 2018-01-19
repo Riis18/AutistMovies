@@ -17,11 +17,8 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 
 /**
@@ -57,6 +54,9 @@ public class PersonalRatingViewController extends MainViewController implements 
         comboP.getItems().addAll(comboList);
     }    
     
+    /*
+    saves the personal rating and sends information
+    */
     @FXML
     private void SavePR(ActionEvent event) {
         
@@ -75,6 +75,9 @@ public class PersonalRatingViewController extends MainViewController implements 
         
     }
 
+    /*
+    cancels the personal rating view
+    */
     @FXML
     private void cancelPR(ActionEvent event) {
         mvm.getSelectedMovie().clear();

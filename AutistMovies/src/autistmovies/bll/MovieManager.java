@@ -100,10 +100,16 @@ public class MovieManager {
         return mp;
     }
     
+    /*
+    Edits the selected movie
+    */
     public void editMovie(Movie movie) {
         mDAO.edit(movie);
     }
 
+    /*
+    returns a list with all movie names
+    */
     public List<String> getAllMoviesByName() {
         return mDAO.getAllMoviesByName();
     }
