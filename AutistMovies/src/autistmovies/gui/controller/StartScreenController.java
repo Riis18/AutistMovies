@@ -44,10 +44,7 @@ public class StartScreenController implements Initializable {
     private TableColumn<Movie, String> PrName;
     @FXML
     private TableColumn<Movie, Float> PrClm;
-    @FXML
     private TableView<Movie> LvList;
-    @FXML
-    private TableColumn<Movie, String> LvName;
     @FXML
     private TableColumn<Movie, String> LvClm;
     @FXML
@@ -65,8 +62,6 @@ public class StartScreenController implements Initializable {
         }
         mvm.loadMovies();
         PrList.setItems(mvm.moviesPrList());
-        LvName.setCellValueFactory(
-                new PropertyValueFactory("name"));
         LvClm.setCellValueFactory(
                 new PropertyValueFactory("lastview"));
         PrName.setCellValueFactory(
