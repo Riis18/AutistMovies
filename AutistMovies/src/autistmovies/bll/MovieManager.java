@@ -103,4 +103,8 @@ public class MovieManager {
     public void editMovie(Movie movie) {
         mDAO.edit(movie);
     }
+
+    public List<String> getAllMoviesByName() {
+        return mDAO.getAllMoviesByName();
+    }
 }

@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.DatePicker;
@@ -161,6 +162,10 @@ public class MainViewModel {
                 moviePrList.add(movieList.get(i));
         }
         return moviePrList;
+    }
+    
+    public List<String> getAllMoviesByName() {
+        return mm.getAllMoviesByName();
     }
     
     

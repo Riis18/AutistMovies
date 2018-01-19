@@ -137,4 +137,25 @@ public class MovieDAO {
         }
     }
 
+    public List<String> getAllMoviesByName() {
+        List<String> getAllMoviesByName = new ArrayList();
+
+        try (Connection con = cm.getConnection()) {
+
+            PreparedStatement pstmt
+                  = con.prepareStatement("SELECT name FROM Movie");
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                getAllMoviesByName.add(rs.getString("name"));
+            }
+        }
+            catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return getAllMoviesByName;
+
+    }
+        
+    
+
  }

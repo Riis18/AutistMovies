@@ -23,6 +23,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -184,6 +186,7 @@ public class AddMovieViewController implements Initializable {
 
     @FXML
     private void saveMovie(ActionEvent event) {
+        Alert saveAlert = new Alert(Alert.AlertType.WARNING);
         if(!mvm.getSelectedMovie().isEmpty()) {
         Movie movie = new Movie();
         movie.setName(txtName.getText());
@@ -195,6 +198,8 @@ public class AddMovieViewController implements Initializable {
         mvm.editMovie(movie);
         mvm.loadMovies();
         mvm.getSelectedMovie().clear();
+        Stage stage = (Stage) saveBtn.getScene().getWindow();
+        stage.close();
             
         } else {
         
@@ -207,6 +212,12 @@ public class AddMovieViewController implements Initializable {
         movie.setRating(Float.parseFloat(combo.getValue()));
         movie.setLastview(localDate.toString());
         Category selectedCategory1 = comboCat1.getValue();
+        if(mvm.getAllMoviesByName().contains(txtName.getText())) {
+                    saveAlert.setContentText("OBS! Movie with that title already exists ");
+                    saveAlert.showAndWait();
+                    saveAlert.close();
+                
+        }else{
         mvm.addMovie(movie);
         selectedCategory1.getMovieList().add(movie);
         mvm.addMovieToCategories(selectedCategory1, movie);
@@ -218,14 +229,16 @@ public class AddMovieViewController implements Initializable {
             Category selectedCategory3 = comboCat3.getValue();
             selectedCategory3.getMovieList().add(movie);
             mvm.addMovieToCategories(selectedCategory3, movie);
-        }
-            
-        }
-        
+         }
         Stage stage = (Stage) saveBtn.getScene().getWindow();
         stage.close();
-    }
-
+            } 
+        }
+     }
+    
+    
+     
+    
     @FXML
     private void cancelAddMovieView(ActionEvent event) {
         mvm.getSelectedMovie().clear();
