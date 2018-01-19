@@ -20,6 +20,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,9 +38,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -83,6 +87,8 @@ public class MainViewController implements Initializable {
     private TableColumn<Movie, Integer> LVClm;
     @FXML
     private JFXSlider vSlider;
+    @FXML
+    private MediaView media2;
 
     
     public MainViewController() {
@@ -143,6 +149,7 @@ public class MainViewController implements Initializable {
         mvm.playMovie(moviePlaying);
         playPause.setText("Pause");
         media.setMediaPlayer(mvm.getMediaPlayer());
+        media2.setMediaPlayer(mvm.getMediaPlayer());
         LocalDate localDate = datePicker.getValue();
         moviePlaying.setLastview(localDate.toString());
         mvm.editMovie(moviePlaying);
@@ -273,5 +280,28 @@ public class MainViewController implements Initializable {
             deleteAlert.close();
         }
         }
+    }
+
+    @FXML
+    private void fullscreen(ActionEvent event) {
+        Stage stage = new Stage();
+        
+        final DoubleProperty width = media.fitWidthProperty();
+        final DoubleProperty height = media.fitHeightProperty();
+    
+        width.bind(Bindings.selectDouble(media.sceneProperty(), "width"));
+        height.bind(Bindings.selectDouble(media.sceneProperty(), "height"));
+    
+        media.setPreserveRatio(true);
+    
+        StackPane root = new StackPane();
+        root.getChildren().add(media);
+    
+        final Scene scene = new Scene(root, 960, 540);
+        scene.setFill(Color.BLACK);
+    
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
     }
 }
