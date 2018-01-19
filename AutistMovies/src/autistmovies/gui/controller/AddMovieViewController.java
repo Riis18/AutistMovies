@@ -185,7 +185,12 @@ public class AddMovieViewController implements Initializable {
         Movie movie = new Movie();
         movie.setName(txtName.getText());
         movie.setId(mvm.getSelectedMovie().get(0).getId());
+        movie.setPersonalrating(Float.parseFloat(comboRat.getValue()));
+        movie.setRating(Float.parseFloat(combo.getValue()));
+        movie.setFileLink(txtFileLink.getText());
+        movie.setLastview(mvm.getSelectedMovie().get(0).getLastview());
         mvm.editMovie(movie);
+        mvm.loadMovies();
         mvm.getSelectedMovie().clear();
             
         } else {
@@ -194,8 +199,8 @@ public class AddMovieViewController implements Initializable {
         movie.setId(-1);
         movie.setName(txtName.getText());
         movie.setFileLink(txtFileLink.getText());
-        movie.setPersonalrating(String.valueOf(comboRat.getValue()));
-        movie.setRating(String.valueOf(combo.getValue()));
+        movie.setPersonalrating(Float.parseFloat(comboRat.getValue()));
+        movie.setRating(Float.parseFloat(combo.getValue()));
         Category selectedCategory1 = comboCat1.getValue();
         mvm.addMovie(movie);
         selectedCategory1.getMovieList().add(movie);

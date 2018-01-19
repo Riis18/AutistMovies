@@ -66,7 +66,7 @@ public class PersonalRatingViewController extends MainViewController implements 
         movie.setFileLink(mvm.getSelectedMovie().get(0).getFileLink());
         movie.setLastview(mvm.getSelectedMovie().get(0).getLastview());
         movie.setRating(mvm.getSelectedMovie().get(0).getRating());
-        movie.setPersonalrating(String.valueOf(comboP.getValue()));
+        movie.setPersonalrating(Float.parseFloat(comboP.getValue()));
         mvm.editMovie(movie);
         mvm.loadMovies();
         mvm.getSelectedMovie().clear();
