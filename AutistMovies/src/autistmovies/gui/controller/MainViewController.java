@@ -275,7 +275,8 @@ public class MainViewController implements Initializable {
         deleteAlert.showAndWait();
         if (deleteAlert.getResult() == ButtonType.YES) {
             mvm.remove(selectedCategory);
-            mvm.loadCategories();
+//            mvm.loadCategories();
+//            cList.setItems(mvm.getCategories());
         } else {
             deleteAlert.close();
         }

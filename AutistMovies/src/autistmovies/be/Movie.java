@@ -22,14 +22,23 @@ public class Movie {
     public String lastview;
 
     
+    /*
+    sets the id of the movie
+    */
     public void setId(int id) {
         this.id = id;
     }
 
+    /*
+    sets the name of the movie
+    */
     public void setName(String name) {
        this.name = name;
     }
 
+    /*
+    sets the rating of the movie
+    */
     public void setRating(Float rating) {
         this.rating = rating;
     }

@@ -18,26 +18,44 @@ public class Category {
     public String name;
     public final List<Movie> Movielist;
     
+    /*
+    Constructor for Category class
+    */
     public Category() {
         this.Movielist = new ArrayList();
     }
-                
+    
+    /*
+    sets the id for the category
+    */
     public void setId(int id) {
         this.id = id;
     }
 
+    /*
+    sets the name for the category
+    */
     public void setName(String name) {
        this.name = name;
     }
 
+    /*
+    gets the id of the category
+    */
     public int getId() {
         return id;
     }
 
+    /*
+    gets the name of the category
+    */
     public String getName() {
         return name;
     }
-     
+    
+    /*
+    gets the list of movies in the category
+    */
     public List<Movie> getMovieList(){
         return Movielist;
     }

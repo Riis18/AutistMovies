@@ -77,7 +77,7 @@ public class MainViewModel {
      }
      
      public void remove(Category selectedCategory) {
-     categoryList.remove(this.selectedCategory);
+     categories.remove(selectedCategory);
      cm.remove(selectedCategory);
      }
     
